@@ -9,5 +9,22 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.latinka.tinkawork.shared.ui.screens.HomeScreenFragment"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_accountOptionsScreenFragment"
+            app:destination="@id/accountOptionsScreenFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountOptionsScreenFragment"
+        android:name="com.latinka.tinkawork.account.ui.screens.AccountOptionsScreenFragment"
+        android:label="fragment_account_options_screen"
+        tools:layout="@layout/fragment_account_options_screen" >
+        <action
+            android:id="@+id/action_accountOptionsScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 </navigation>

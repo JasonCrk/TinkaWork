@@ -8,12 +8,12 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-    android:id="@+id/nav_host_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:name="androidx.navigation.fragment.NavHostFragment"
-    app:navGraph="@navigation/nav_graph"
-    app:defaultNavHost="true"
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true"
         android:fitsSystemWindows="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:fitsSystemWindows="true"
+        android:animateLayoutChanges="true"
         app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>
