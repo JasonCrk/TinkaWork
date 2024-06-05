@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".shared.ui.screens.HomeScreenFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/mainOptions"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginBottom="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/timeStopwatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="68sp"
+            android:text="00:00:00"
+            android:layout_marginBottom="30dp"
+            android:theme="@style/Theme.AppCompat.DayNight"
+            tools:ignore="HardcodedText" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/entryButton"
+                android:text="Entrada"
+                android:textSize="24sp"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/green"
+                app:icon="@drawable/ic_baseline_play_arrow_24"
+                app:iconGravity="textStart"
+                android:gravity="center"
+                app:iconTint="@color/white"
+                app:iconSize="37dp"
+                tools:ignore="HardcodedText" />
+
+            <View
+                android:id="@+id/divider2"
+                app:layout_constraintTop_toBottomOf="@id/entryButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="3dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/green"
+                android:backgroundTintMode="screen"
+                android:layout_gravity="center_horizontal"
+                android:background="?android:attr/listDivider" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/breakButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Descanso"
+                android:textSize="24sp"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_baseline_coffee_24"
+                android:layout_gravity="center"
+                app:iconGravity="textStart"
+                app:iconSize="32dp"
+                app:iconTint="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <View
+                android:id="@+id/divider3"
+                app:layout_constraintTop_toBottomOf="@id/breakButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="3dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/yellow"
+                android:backgroundTintMode="screen"
+                android:layout_gravity="center_horizontal"
+                android:background="?android:attr/listDivider" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/exitButton"
+            android:text="Salida"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            app:iconSize="32dp"
+            app:iconTint="@color/white"
+            app:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:layout_gravity="center"
+            app:iconGravity="textStart"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
