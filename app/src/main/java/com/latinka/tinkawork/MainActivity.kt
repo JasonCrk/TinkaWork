@@ -3,6 +3,7 @@ package com.latinka.tinkawork
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +32,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setupWithNavController(navController)
 
-        // Esto es para quitar el espacio vacio inferior que tiene el BottonNavigationView
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.loginScreenFragment -> binding.bottomNavigation.visibility = View.GONE
+                else -> binding.bottomNavigation.visibility = View.VISIBLE
+            }
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigation) { v, insets ->
             val bottomInsets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 insets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars()).bottom
