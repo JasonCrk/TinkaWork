@@ -15,6 +15,7 @@
         <activity
             android:name=".establishment.ui.screens.EstablishmentDetailsActivity"
             android:exported="false" />
+
         <activity
             android:name=".auth.ui.screens.LoginActivity"
             android:exported="false" />

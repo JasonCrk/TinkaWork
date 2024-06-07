@@ -5,6 +5,7 @@
     <color name="gray">#66665E</color>
     <color name="red">#E40D1D</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="btn_access_green">#0F6639</color>
     <color name="yellow">#FAE602</color>
     <color name="background_light">#FFFFF4</color>
 </resources>
