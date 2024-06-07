@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".auth.ui.screens.LoginScreenFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Logo"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/dniField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="20dp"
+        android:textSize="22sp"
+        android:autofillHints="DNI"
+        android:hint="DNI"
+        android:inputType="number"
+        android:minHeight="52dp"
+        android:textColorHint="@color/gray"
+        tools:ignore="HardcodedText,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints="Contraseña"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textSize="22sp"
+        android:minHeight="52dp"
+        android:textColorHint="@color/gray"
+        tools:ignore="HardcodedText,VisualLintTextFieldSize" />
+
+    <Button
+        android:id="@+id/signInBtn"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:backgroundTint="?attr/colorButtonNormal"
+        android:text="Ingresar"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="25dp"
+        tools:ignore="HardcodedText" />
+</LinearLayout>
