@@ -1,38 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".account.ui.screens.PersonalInformationActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="12dp">
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_baseline_account_circle_24" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="2dp"
-        android:text="Johann Jhyener \n Zevallos Robles"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:text="Administrador"/>
+    tools:context=".account.ui.screens.PersonalInformationScreenFragment">
 
     <LinearLayout
+        android:id="@+id/accountInfo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/accountPicture"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            android:contentDescription="Picture"
+            android:layout_gravity="center_horizontal"
+            app:tint="?attr/colorPrimary"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/accountFirstName"
+            android:text="Emerzon Javier"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/accountLastName"
+            android:text="Kolki Martinez"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/accountRole"
+            android:text="Administrador"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@+id/accountInfo"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -47,8 +76,10 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginEnd="14dp"
+                android:contentDescription="DNI"
                 android:src="@drawable/dni"
-                android:layout_marginEnd="10dp"/>
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,24 +91,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DNI"
-                    android:textSize="18sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="71934702"
                     android:textSize="18sp" />
-
             </LinearLayout>
-
-
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider"
+        <com.google.android.material.divider.MaterialDivider
+            app:dividerColor="@color/gray"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,8 +116,10 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="Phone icon"
                 android:src="@drawable/phone"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="14dp"
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,23 +131,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Número de celular"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="916291534"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider4"
+        <com.google.android.material.divider.MaterialDivider
+            app:dividerColor="@color/gray"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,8 +159,11 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_baseline_location_on_24" />
+                android:layout_marginEnd="14dp"
+                android:contentDescription="Location"
+                android:src="@drawable/ic_baseline_location_on_24"
+                app:tint="?attr/colorPrimary"
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -141,23 +175,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dirección"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="jr.Unión-sin número"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
-
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider5"
+        <com.google.android.material.divider.MaterialDivider
+            app:dividerColor="@color/gray"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -168,8 +202,10 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="Calendar"
                 android:src="@drawable/calendar"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="14dp"
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,19 +217,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fecha de nacimiento"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="01 de octubre 2004"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

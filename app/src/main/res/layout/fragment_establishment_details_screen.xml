@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".establishment.ui.screens.EstablishmentDetailsActivity"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="265dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".establishment.ui.screens.EstablishmentDetailsScreenFragment">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_imagen" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
 
-    <TextView
-        android:id="@+id/idTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="28sp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textStyle="bold"
-        android:text="Establecimiento Nº01" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Establishment image"
+            android:src="@drawable/ic_imagen"
+            tools:ignore="HardcodedText" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/idTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:text="Establecimiento Nº01"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -44,7 +48,10 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_location_on_24"/>
+            android:contentDescription="Departamento icon"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:tint="@color/gray"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +85,10 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_location_on_24"/>
+            android:contentDescription="Departamento icon"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:tint="@color/gray"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,7 +122,10 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_location_on_24"/>
+            android:contentDescription="Departamento icon"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:tint="@color/gray"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,41 +138,47 @@
                 android:layout_height="wrap_content"
                 android:text="Dirección:"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="XXX XXX XXX XXX XXX X"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:paddingEnd="50dp"
-        android:paddingLeft="50dp">
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp">
 
         <Button
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Cancelar"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:layout_marginEnd="10dp"
-            android:backgroundTint="@color/red"/>
+            android:backgroundTint="@color/red"
+            tools:ignore="HardcodedText" />
 
         <Button
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:backgroundTint="@color/green"
-            android:text="Continuar" />
+            android:text="Continuar"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
-
 </LinearLayout>
