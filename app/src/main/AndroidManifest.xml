@@ -13,9 +13,6 @@
         android:theme="@style/Theme.TinkaWork"
         tools:targetApi="31">
         <activity
-            android:name=".shared.ui.screens.HistoryActivity"
-            android:exported="false" />
-        <activity
             android:name=".establishment.ui.screens.EstablishmentDetailsActivity"
             android:exported="false" />
         <activity
