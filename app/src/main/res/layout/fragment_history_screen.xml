@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="65dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".shared.ui.screens.HistoryScreenFragment">
 
@@ -48,13 +49,13 @@
                     app:cardCornerRadius="10dp"
                     android:elevation="0dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="12dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -81,7 +82,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginBottom="6dp"
                     android:elevation="10dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -114,7 +115,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginBottom="6dp"
                     android:elevation="0dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -147,7 +148,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginBottom="6dp"
                     android:elevation="10dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -180,7 +181,7 @@
                     app:cardCornerRadius="10dp"
                     android:elevation="0dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -213,7 +214,7 @@
                     app:cardCornerRadius="10dp"
                     android:elevation="0dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -268,7 +269,7 @@
                     app:cardCornerRadius="10dp"
                     android:elevation="0dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -301,7 +302,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginBottom="6dp"
                     android:elevation="10dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -334,7 +335,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginBottom="6dp"
                     android:elevation="0dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -367,7 +368,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginBottom="6dp"
                     android:elevation="10dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -400,7 +401,7 @@
                     app:cardCornerRadius="10dp"
                     android:elevation="0dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -433,7 +434,7 @@
                     app:cardCornerRadius="10dp"
                     android:elevation="0dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/btn_access_green">
+                    android:backgroundTint="@color/green">
 
                     <LinearLayout
                         android:layout_width="match_parent"

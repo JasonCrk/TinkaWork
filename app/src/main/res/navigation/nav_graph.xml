@@ -14,7 +14,15 @@
         android:id="@+id/accountOptionsScreenFragment"
         android:name="com.latinka.tinkawork.account.ui.screens.AccountOptionsScreenFragment"
         android:label="fragment_account_options_screen"
-        tools:layout="@layout/fragment_account_options_screen" />
+        tools:layout="@layout/fragment_account_options_screen" >
+        <action
+            android:id="@+id/action_accountOptionsScreenFragment_to_personalInformationScreenFragment"
+            app:destination="@id/personalInformationScreenFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/loginScreenFragment"
         android:name="com.latinka.tinkawork.auth.ui.screens.LoginScreenFragment"
@@ -24,4 +32,19 @@
             android:id="@+id/action_loginScreenFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/establishmentDetailsScreenFragment"
+        android:name="com.latinka.tinkawork.establishment.ui.screens.EstablishmentDetailsScreenFragment"
+        android:label="fragment_establishment_details_screen"
+        tools:layout="@layout/fragment_establishment_details_screen" />
+    <fragment
+        android:id="@+id/personalInformationScreenFragment"
+        android:name="com.latinka.tinkawork.account.ui.screens.PersonalInformationScreenFragment"
+        android:label="fragment_personal_information_screen"
+        tools:layout="@layout/fragment_personal_information_screen" />
+    <fragment
+        android:id="@+id/historyScreenFragment"
+        android:name="com.latinka.tinkawork.shared.ui.screens.HistoryScreenFragment"
+        android:label="fragment_history_screen"
+        tools:layout="@layout/fragment_history_screen" />
 </navigation>

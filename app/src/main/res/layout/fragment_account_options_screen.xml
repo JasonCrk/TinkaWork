@@ -68,6 +68,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/personalInformationBtn"
             android:clickable="true"
             android:focusable="true"
             app:cardElevation="2dp"
@@ -76,28 +77,28 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:paddingVertical="12dp"
-                android:paddingHorizontal="13dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="12dp">
 
                 <LinearLayout
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_person_24"
-                        android:contentDescription="personIcon"
-                        app:tint="?attr/colorSecondary"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginEnd="6dp"
+                        android:contentDescription="personIcon"
+                        android:src="@drawable/ic_baseline_person_24"
+                        app:tint="?attr/colorSecondary"
                         tools:ignore="HardcodedText" />
 
                     <TextView
@@ -110,15 +111,15 @@
                 </LinearLayout>
 
                 <ImageView
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/gray"
-                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                    android:contentDescription="personIcon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="personIcon"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/gray"
                     tools:ignore="HardcodedText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

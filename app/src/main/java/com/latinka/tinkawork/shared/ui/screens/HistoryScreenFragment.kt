@@ -6,14 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.latinka.tinkawork.R
+import com.latinka.tinkawork.databinding.FragmentHistoryScreenBinding
 
 class HistoryScreenFragment : Fragment() {
+
+    private lateinit var binding: FragmentHistoryScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_history_screen, container, false)
+    ): View {
+        binding = FragmentHistoryScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }
