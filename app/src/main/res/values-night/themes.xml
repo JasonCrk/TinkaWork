@@ -16,4 +16,11 @@
     <style name="BottomNavigationViewActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/opacity_yellow</item>
     </style>
+
+    <style name="ButtonCardOption" parent="Widget.Material3.CardView.Filled">
+        <item name="elevation">0dp</item>
+        <item name="cardBackgroundColor">@color/button_elevation_dark</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
 </resources>
