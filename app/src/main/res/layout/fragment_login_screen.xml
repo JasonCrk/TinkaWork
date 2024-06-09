@@ -58,9 +58,9 @@
         android:id="@+id/signInBtn"
         android:layout_width="230dp"
         android:layout_height="60dp"
-        android:backgroundTint="?attr/colorButtonNormal"
+        android:backgroundTint="?attr/colorSecondary"
         android:text="Ingresar"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorButtonNormal"
         android:textSize="20sp"
         android:layout_marginTop="25dp"
         tools:ignore="HardcodedText" />
