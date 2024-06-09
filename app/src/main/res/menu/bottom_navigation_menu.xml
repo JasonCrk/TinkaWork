@@ -5,21 +5,21 @@
 
     <item
         android:id="@+id/homeScreenFragment"
-        android:title="Home"
+        android:title="Inicio"
         android:icon="@drawable/ic_baseline_home_24"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/historyScreenFragment"
-        android:title="History"
+        android:title="Historial"
         android:icon="@drawable/ic_baseline_history_24"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/accountOptionsScreenFragment"
-        android:title="Profile"
+        android:title="Tú"
         android:icon="@drawable/ic_baseline_account_circle_24"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
