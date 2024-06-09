@@ -7,5 +7,7 @@
     <color name="red">#E40D1D</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FAE602</color>
+    <color name="opacity_yellow">#80FAE602</color>
+    <color name="opacity_red">#80E40D1D</color>
     <color name="background_light">#FFFFF4</color>
 </resources>
