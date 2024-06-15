@@ -64,13 +64,13 @@
             android:textSize="22sp"
             tools:ignore="HardcodedText,VisualLintTextFieldSize" />
     </com.google.android.material.textfield.TextInputLayout>
-
      <Button
          android:id="@+id/btnForgetPassword"
          android:layout_width="wrap_content"
-         android:layout_height="40dp"
+         android:layout_height="45dp"
          android:text="¿Olvidaste tu contraseña?"
          android:textColor="@color/gray"
+         android:textSize="18sp"
          android:backgroundTint="@color/transparent"
          tools:ignore="HardcodedText" />
 
