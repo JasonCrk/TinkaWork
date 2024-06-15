@@ -12,4 +12,5 @@
     <color name="opacity_red">#80E40D1D</color>
     <color name="background_light">#FFFFF4</color>
     <color name="button_elevation_white">#ECECDF</color>
+    <color name="transparent">#00000000</color>
 </resources>
