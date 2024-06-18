@@ -26,6 +26,22 @@
             android:exported="false" />
 
         <activity
+            android:name=".auth.ui.screens.ChangePasswordFragment"
+            android:exported="false" />
+
+        <activity
+            android:name=".auth.ui.screens.ConfirmChangePasswordActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".shared.ui.screens.AssistanceDetailsFragment"
+            android:exported="false" />
+
+        <activity
+            android:name=".auth.ui.screens.SendEmailChangePasswordActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

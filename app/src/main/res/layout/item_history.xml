@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="105dp"
+    android:layout_height="105dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="8dp"
+    android:backgroundTintMode="src_atop"
+    android:backgroundTint="@color/greenCardView"
+    xmlns:tools="http://schemas.android.com/tools">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="top|end"
+            android:padding="10dp"
+
+           >
+
+            <TextView
+                android:id="@+id/txtFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:text="10"
+                android:textColor="@color/gray_"
+                android:textSize="65sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/txtDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jueves"
+                android:textColor="@color/gray_"
+                android:textSize="22sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+</androidx.cardview.widget.CardView>
