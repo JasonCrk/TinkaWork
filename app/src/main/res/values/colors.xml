@@ -3,6 +3,8 @@
     <color name="black">#171715</color>
     <color name="button_elevation_dark">#2E2E2B</color>
     <color name="green">#0F6639</color>
+    <color name="green2">#138148</color>
+    <color name="gray_">#80969696</color>
     <color name="lighter_green">#00C158</color>
     <color name="gray">#66665E</color>
     <color name="red">#E40D1D</color>
@@ -13,4 +15,6 @@
     <color name="background_light">#FFFFF4</color>
     <color name="button_elevation_white">#ECECDF</color>
     <color name="transparent">#00000000</color>
+    <color name="greenCardView">#0A512E</color>
+    <color name="green59">#9718B367</color>
 </resources>

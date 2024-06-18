@@ -23,4 +23,9 @@
         <item name="strokeColor">@android:color/transparent</item>
         <item name="strokeWidth">0dp</item>
     </style>
+
+    <style name="buttonsSendEmail">
+        <item name="android:backgroundTint">@color/yellow</item>
+
+    </style>
 </resources>

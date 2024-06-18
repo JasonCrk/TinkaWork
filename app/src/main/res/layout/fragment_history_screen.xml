@@ -7,68 +7,67 @@
     android:layout_marginBottom="65dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".shared.ui.screens.HistoryScreenFragment">
-
-    <ScrollView
+<LinearLayout
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    >
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UselessParent">
 
-        <LinearLayout
-            android:paddingTop="15dp"
-            android:scrollbars="vertical"
-            android:orientation="vertical"
-            android:paddingHorizontal="25dp"
-            android:paddingBottom="20dp"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Abril / 2025"
+            android:layout_marginLeft="30dp"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-            <LinearLayout
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            app:dividerColor="@color/gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_history"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                tools:ignore="UselessParent">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Abril / 2025"
-                    android:textColor="?attr/colorPrimary"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    app:dividerColor="@color/gray"
-                    android:layout_height="match_parent"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                tools:ignore="UselessParent"
+                app:layout_constraintTop_toTopOf="parent"
                 >
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerHistory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_history"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:ignore="UselessParent">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Abril / 2025"
                     android:textColor="?attr/colorPrimary"
                     android:textSize="24sp"
+                    android:layout_marginLeft="30dp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
                 <com.google.android.material.divider.MaterialDivider
@@ -77,6 +76,5 @@
                     app:dividerColor="@color/gray"
                     android:layout_height="match_parent"/>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

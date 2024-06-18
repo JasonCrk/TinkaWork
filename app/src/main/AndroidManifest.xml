@@ -13,16 +13,26 @@
         android:theme="@style/Theme.TinkaWork"
         tools:targetApi="31">
         <activity
+            android:name=".auth.ui.screens.ChangePasswordFragment"
+            android:exported="false" />
+        <activity
+            android:name=".auth.ui.screens.ConfirmChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.ui.screens.VerifyCodeChanguePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".shared.ui.screens.AssistanceDetailsFragment"
             android:exported="false" />
-        <!--<activity
-            android:name=".account.ui.screens.SendEmailChangePasswordFragment"
-            android:exported="false" />-->
+        <activity
+            android:name=".auth.ui.screens.SendEmailChangePasswordActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
