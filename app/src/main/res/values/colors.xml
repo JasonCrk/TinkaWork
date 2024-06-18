@@ -2,14 +2,20 @@
 <resources>
     <color name="black">#171715</color>
     <color name="button_elevation_dark">#2E2E2B</color>
-    <color name="green">#0F6639</color>
+    <color name="green">#169051</color>
+    <color name="green_20_opacity">#33169051</color>
     <color name="lighter_green">#00C158</color>
     <color name="gray">#66665E</color>
     <color name="red">#E40D1D</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FAE602</color>
+    <color name="yellow_dark">#B4B40F</color>
+    <color name="yellow_20_opacity">#33FAE602</color>
+    <color name="yellow_60_opacity">#99FAE602</color>
     <color name="opacity_yellow">#80FAE602</color>
     <color name="opacity_red">#80E40D1D</color>
+    <color name="red_20_opacity">#33E40D1D</color>
+    <color name="red_60_opacity">#99E40D1D</color>
     <color name="background_light">#FFFFF4</color>
     <color name="button_elevation_white">#ECECDF</color>
     <color name="transparent">#00000000</color>
