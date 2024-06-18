@@ -12,18 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkaWork"
         tools:targetApi="31">
+
         <activity
-            android:name=".Accept.Photo.AcceptPhotoActivity"
+            android:name=".shared.ui.screens.AcceptPhotoActivity"
             android:exported="false" />
+
         <activity
-            android:name=".Smile.At.The.Camera.SmileAtTheCameraActivity"
+            android:name=".shared.ui.screens.SmileAtTheCameraActivity"
             android:exported="false" />
-        <activity
-            android:name=".account.ui.screens.PersonalInformationActivity"
-            android:exported="false" />
+
         <activity
             android:name=".establishment.ui.screens.EstablishmentDetailsActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

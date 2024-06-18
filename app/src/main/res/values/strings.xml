@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TinkaWork</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="continue_button">Continuar</string>
+    <string name="smile_at_the_camera_message">Empieza tu día con una gran sonrisa</string>
+    <string name="take_the_picture_button">Tomarse la foto</string>
 </resources>

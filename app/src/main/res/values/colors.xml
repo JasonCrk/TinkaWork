@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#171715</color>
-    <color name="green">#0F6639</color>
+    <color name="green">#169051</color>
     <color name="red">#E40D1D</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FAE602</color>
     <color name="background_light">#FFFFF4</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="green_30_opacity">#4D169051</color>
+    <color name="yellow_60_opacity">#99FAE602</color>
+    <color name="yellow_30_opacity">#4DFAE602</color>
+    <color name="dark_yellow">@color/black</color>
+    <color name="bg_yellow_60_to_yellow_30">@color/yellow_60_opacity</color>
 </resources>
