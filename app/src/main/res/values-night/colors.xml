@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_yellow">@color/yellow</color>
+    <color name="bg_yellow_60_to_yellow_30">@color/yellow_30_opacity</color>
+</resources>
