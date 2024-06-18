@@ -4,22 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home_nav_tab"
-        android:title="Home"
+        android:id="@+id/homeScreenFragment"
+        android:title="Inicio"
         android:icon="@drawable/ic_baseline_home_24"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
 
     <item
-        android:id="@+id/history_nav_tab"
-        android:title="History"
+        android:id="@+id/historyScreenFragment"
+        android:title="Historial"
         android:icon="@drawable/ic_baseline_history_24"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
 
     <item
-        android:id="@+id/profile_nav_tab"
-        android:title="Profile"
+        android:id="@+id/accountOptionsScreenFragment"
+        android:title="Tú"
         android:icon="@drawable/ic_baseline_account_circle_24"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />

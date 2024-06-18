@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">TinkaWork</string>
+    <string name="workTimer">00:00:00</string>
+    <string name="entryButton">Entrada</string>
+    <string name="breakButton">Descanso</string>
+    <string name="exitButton">Salida</string>
+    <string name="working_state_working">Trabajando</string>
+    <string name="working_state_exit">Trabajo concluido</string>
+    <string name="working_state_break">Descansando</string>
     <string name="cancel_button">Cancelar</string>
     <string name="continue_button">Continuar</string>
     <string name="smile_at_the_camera_message">Empieza tu día con una gran sonrisa</string>
