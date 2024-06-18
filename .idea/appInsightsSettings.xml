@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.latinka.tinkawork" />
+                  <option name="mobileSdkAppId" value="1:620271420136:android:9391dfed3cf1b7a3b73f5d" />
+                  <option name="projectId" value="tinkawork-d0866" />
+                  <option name="projectNumber" value="620271420136" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

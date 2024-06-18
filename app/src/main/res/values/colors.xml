@@ -17,7 +17,9 @@
     <color name="red_20_opacity">#33E40D1D</color>
     <color name="red_60_opacity">#99E40D1D</color>
     <color name="background_light">#FFFFF4</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="green_30_opacity">#4D169051</color>
+    <color name="yellow_60_opacity">#99FAE602</color>
     <color name="yellow_30_opacity">#4DFAE602</color>
     <color name="dark_yellow">@color/black</color>
     <color name="bg_yellow_60_to_yellow_30">@color/yellow_60_opacity</color>
