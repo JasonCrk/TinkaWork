@@ -24,12 +24,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="28sp"
-        android:maxLines="1"
+        android:layout_marginBottom="22dp"
         android:ellipsize="end"
-        android:textStyle="bold"
-        android:text="Establecimiento Nº01" />
+        android:maxLines="1"
+        android:text="Establecimiento #1"
+        android:textSize="28sp"
+        android:textStyle="normal" />
 
 </RelativeLayout>
 
@@ -38,13 +38,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:layout_marginTop="3dp">
+        android:padding="8dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="1dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_location_on_24"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_location_on_24" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +63,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="XXX XXX XXX XXX XXX X"
+                android:text="La Liberted"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -72,18 +74,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:layout_marginTop="3dp">
+        android:padding="8dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="1dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_location_on_24"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/city"
+            android:layout_marginEnd="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+
             android:layout_gravity="center_vertical">
 
             <TextView
@@ -95,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="XXX XXX XXX XXX XXX X"
+                android:text="Trujillo"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -106,13 +111,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="8dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginTop="3dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_location_on_24"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/direcciones"
+            android:layout_marginEnd="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,7 +136,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="XXX XXX XXX XXX XXX X"
+                android:text="Victor Larco Herrera 13011 "
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -139,27 +146,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:paddingEnd="50dp"
-        android:paddingLeft="50dp">
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="15dp">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cancelar"
-            android:textSize="18dp"
-            android:layout_marginEnd="10dp"
-            android:backgroundTint="@color/red"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="18dp"
+            android:drawableRight="@drawable/ic_outline_arrow_right_alt_24"
             android:backgroundTint="@color/green"
-            android:text="Continuar" />
+            android:text="Continuar "
+            android:textSize="18dp"
+            android:paddingLeft="125dp"
+            android:paddingRight="125dp"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_sharp_arrow_left_alt_24"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center"
+            android:text="Cancelar  "
+            android:textSize="18dp"
+            android:paddingLeft="125dp"
+            android:paddingRight="125dp"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
 
 </LinearLayout>

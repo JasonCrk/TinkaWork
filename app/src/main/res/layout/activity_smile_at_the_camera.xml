@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp"
+    tools:context=".Smile.At.The.Camera.SmileAtTheCameraActivity">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/facial_recognition"
+        android:layout_marginBottom="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"
+        android:text="Empieza tu día con una gran sonrisa" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="15dp"
+        android:layout_marginBottom="150dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_baseline_camera_24"
+            android:backgroundTint="@color/green"
+            android:text="Tomarse la foto  "
+            android:textSize="18dp"
+            android:paddingLeft="90dp"
+            android:paddingRight="95dp"
+            android:paddingStart="100dp"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_sharp_arrow_left_alt_24"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center"
+            android:text="Cancelar  "
+            android:textSize="18dp"
+            android:paddingLeft="110dp"
+            android:paddingRight="110dp"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
