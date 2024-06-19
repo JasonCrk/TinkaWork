@@ -7,15 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="40dp"
-    tools:context=".shared.ui.screens.AcceptPhotoActivity">
+    tools:context=".shared.ui.screens.AcceptPhotoScreenFragment">
 
     <ImageView
         android:id="@+id/previewPhoto"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.85"
         android:contentDescription="User photo"
         android:src="@drawable/imagen_vertical"
+        app:layout_constraintHeight_percent="0.80"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText"
         tools:layout_editor_absoluteX="40dp" />
@@ -40,6 +40,7 @@
             tools:ignore="HardcodedText" />
 
         <ImageButton
+            android:id="@+id/acceptPhotoButton"
             android:contentDescription="Accept photo"
             android:background="@drawable/bg_accept_photo_button"
             android:src="@drawable/ic_accept_photo"

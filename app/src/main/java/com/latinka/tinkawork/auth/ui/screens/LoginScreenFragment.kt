@@ -1,12 +1,10 @@
 package com.latinka.tinkawork.auth.ui.screens
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 
 import com.latinka.tinkawork.R
@@ -17,7 +15,8 @@ class LoginScreenFragment : Fragment() {
     private lateinit var binding: FragmentLoginScreenBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginScreenBinding.inflate(inflater, container, false)
@@ -26,16 +25,15 @@ class LoginScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.signInBtn.setOnClickListener {
-            view.findNavController().popBackStack()
-            view.findNavController().navigate(R.id.homeScreenFragment)
+
+        val navigationController = view.findNavController()
+
+        binding.forgetPasswordBtn.setOnClickListener {
+            navigationController.navigate(R.id.action_loginScreenFragment_to_sendEmailChangePasswordScreenFragment)
         }
 
-        val btnForgetPassword = view.findViewById<Button>(R.id.btnForgetPassword)
-
-        btnForgetPassword.setOnClickListener {
-            val intent = Intent(activity, SendEmailChangePasswordActivity::class.java)
-            startActivity(intent)
+        binding.signInBtn.setOnClickListener {
+            navigationController.navigate(R.id.action_loginScreenFragment_to_homeScreenFragment)
         }
     }
 }

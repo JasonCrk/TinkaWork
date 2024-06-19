@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    tools:context=".account.ui.screens.PersonalInformationScreenFragment"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -83,6 +79,7 @@
                 android:layout_marginEnd="14dp"
                 android:contentDescription="DNI"
                 android:src="@drawable/dni"
+                app:tint="@color/gray"
                 tools:ignore="HardcodedText" />
 
             <LinearLayout
@@ -96,12 +93,14 @@
                     android:layout_height="wrap_content"
                     android:text="DNI"
                     android:textSize="21sp"
+                    android:textColor="?attr/colorPrimary"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="71934702"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
@@ -120,6 +119,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                app:tint="@color/gray"
                 android:contentDescription="Phone icon"
                 android:src="@drawable/phone"
                 android:layout_marginEnd="14dp"
@@ -135,6 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Número de celular"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="21sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
@@ -143,6 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="916291534"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -164,9 +166,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="14dp"
+                app:tint="@color/gray"
                 android:contentDescription="Location"
                 android:src="@drawable/ic_baseline_location_on_24"
-                app:tint="?attr/colorPrimary"
                 tools:ignore="HardcodedText" />
 
             <LinearLayout
@@ -181,6 +183,7 @@
                     android:text="Dirección"
                     android:textSize="21sp"
                     android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -188,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:text="jr.Unión-sin número"
                     android:textSize="18sp"
+                    android:textColor="?attr/colorPrimary"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
         </LinearLayout>
@@ -207,6 +211,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:contentDescription="Calendar"
+                app:tint="@color/gray"
                 android:src="@drawable/calendar"
                 android:layout_marginEnd="14dp"
                 tools:ignore="HardcodedText" />
@@ -223,12 +228,14 @@
                     android:text="Fecha de nacimiento"
                     android:textSize="21sp"
                     android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="01 de octubre 2004"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
             </LinearLayout>

@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-import com.latinka.tinkawork.databinding.FragmentPersonalInformationBinding
+import com.latinka.tinkawork.databinding.FragmentPersonalInformationScreenBinding
 
-class PersonalInformationFragment: Fragment() {
+class PersonalInformationScreenFragment: Fragment() {
 
-    private lateinit var binding: FragmentPersonalInformationBinding
+    private lateinit var binding: FragmentPersonalInformationScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPersonalInformationBinding.inflate(inflater, container, false)
+        binding = FragmentPersonalInformationScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

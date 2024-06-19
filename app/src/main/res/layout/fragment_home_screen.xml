@@ -140,21 +140,22 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/breakButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:cornerRadius="12dp"
-            android:text="@string/breakButton"
-            android:textSize="24sp"
             android:layout_width="match_parent"
             android:layout_height="63dp"
-            android:backgroundTint="@color/yellow"
-            android:textColor="@color/black"
-            app:icon="@drawable/ic_baseline_coffee_24"
             android:layout_gravity="center"
+            android:backgroundTint="@color/yellow"
+            android:text="@string/breakButton"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_cofee"
             app:iconGravity="textStart"
-            app:iconSize="30dp"
-            app:iconTint="@color/black" />
+            app:iconSize="28dp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/divider3"

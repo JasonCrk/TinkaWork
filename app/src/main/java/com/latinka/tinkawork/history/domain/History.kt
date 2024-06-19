@@ -1,4 +1,4 @@
-package com.latinka.tinkawork.shared.ui.screens
+package com.latinka.tinkawork.history.domain
 
 data class History(
     val fecha: String,

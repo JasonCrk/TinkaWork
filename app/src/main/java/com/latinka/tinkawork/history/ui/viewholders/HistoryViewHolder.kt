@@ -1,11 +1,12 @@
-package com.latinka.tinkawork.shared.ui.screens
+package com.latinka.tinkawork.history.ui.viewholders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
 import com.latinka.tinkawork.R
-import java.util.zip.Inflater
+import com.latinka.tinkawork.history.domain.History
 
 class HistoryViewHolder(inflater: LayoutInflater,
                         viewGroup: ViewGroup):
@@ -16,10 +17,10 @@ class HistoryViewHolder(inflater: LayoutInflater,
     private var dia : TextView? = null
 
     init {
-        fecha = itemView.findViewById(R.id.txtFecha)
-        dia = itemView.findViewById(R.id.txtDia)
+        fecha = itemView.findViewById(R.id.dayHistoryRegister)
+        dia = itemView.findViewById(R.id.dayNameHistoryRegister)
     }
-    fun bind(history:History){
+    fun bind(history: History){
         fecha?.text = history.fecha
         dia?.text = history.dia
     }

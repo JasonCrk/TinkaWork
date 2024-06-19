@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="12dp"
-    tools:context=".shared.ui.screens.SmileAtTheCameraActivity">
+    tools:context=".shared.ui.screens.SmileAtTheCameraScreenFragment">
 
     <ImageView
         android:layout_width="350dp"
@@ -36,15 +36,15 @@
         android:layout_marginBottom="150dp">
 
         <Button
+            android:id="@+id/takeAPhotoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_outline_arrow_right_alt_24"
             android:text="@string/take_the_picture_button"
             app:iconGravity="textEnd"
-            android:gravity="center"
             app:iconTint="@color/white"
             app:icon="@drawable/ic_baseline_camera_24"
             app:iconSize="30dp"
+            android:paddingVertical="8dp"
             android:textColor="@color/white"
             android:backgroundTint="@color/green"
             android:textSize="20sp"
@@ -55,15 +55,12 @@
             android:layout_height="wrap_content"
             app:iconGravity="textStart"
             android:gravity="center"
-            app:iconTint="?attr/colorPrimary"
+            app:iconTint="@color/gray"
             app:icon="@drawable/ic_sharp_arrow_left_alt_24"
             app:iconSize="30dp"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="@color/gray"
             android:backgroundTint="@color/transparent"
-            android:layout_gravity="center"
             android:text="@string/cancel_button"
-            android:textSize="20sp"
-            android:paddingLeft="125dp"
-            android:paddingRight="125dp" />
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

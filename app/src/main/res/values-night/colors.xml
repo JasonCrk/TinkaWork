@@ -2,4 +2,7 @@
 <resources>
     <color name="dark_yellow">@color/yellow</color>
     <color name="bg_yellow_60_to_yellow_30">@color/yellow_30_opacity</color>
+    <color name="white_dark">@color/black</color>
+    <color name="bg_green_30_to_green_60">@color/green_60_opacity</color>
+    <color name="green_25_opacity">#40169051</color>
 </resources>
