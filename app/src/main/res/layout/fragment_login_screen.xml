@@ -35,13 +35,12 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dniField"
+            android:id="@+id/emailField"
             android:layout_width="350dp"
-            android:layout_height="53dp"
-            android:textSize="22sp"
+            android:layout_height="wrap_content"
             android:autofillHints="DNI"
-            android:hint="@string/dni_hint_field"
-            android:inputType="number"
+            android:hint="@string/email_hint_field"
+            android:inputType="textEmailAddress"
             android:minHeight="52dp"
             android:textColorHint="@color/gray" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,14 +54,13 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordField"
             android:layout_width="350dp"
-            android:layout_height="53dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:autofillHints="Contraseña"
             android:hint="@string/password_hint_field"
             android:inputType="textPassword"
             android:minHeight="52dp"
-            android:textColorHint="@color/gray"
-            android:textSize="22sp" />
+            android:textColorHint="@color/gray" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -74,7 +72,7 @@
         android:text="¿Olvidaste tu contraseña?"
         android:textColor="@color/gray"
         android:layout_marginBottom="10dp"
-        android:textSize="18sp"
+        android:textSize="17sp"
         tools:ignore="HardcodedText" />
 
     <Button
