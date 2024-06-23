@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.FirebaseApp
 
 import com.latinka.tinkawork.databinding.ActivityMainBinding
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.bottomNavigation.setupWithNavController(navController)
+        FirebaseApp.initializeApp(this)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
