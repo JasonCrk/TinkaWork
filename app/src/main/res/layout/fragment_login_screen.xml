@@ -30,8 +30,15 @@
         tools:ignore="HardcodedText" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailFieldLayout"
         android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
+        app:helperTextEnabled="true"
+        android:hint="@string/email_hint_field"
+        app:helperTextTextColor="@color/red"
+        app:placeholderText="@string/email_hint_field"
+        app:placeholderTextColor="@color/gray"
+        app:boxStrokeErrorColor="@color/red"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -46,9 +53,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/red"
+        android:hint="@string/password_hint_field"
+        app:placeholderText="@string/password_hint_field"
+        app:placeholderTextColor="@color/gray"
+        app:boxStrokeErrorColor="@color/red"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -58,6 +72,7 @@
             android:layout_marginTop="12dp"
             android:autofillHints="Contraseña"
             android:hint="@string/password_hint_field"
+            app:boxStrokeErrorColor="@color/red"
             android:inputType="textPassword"
             android:minHeight="52dp"
             android:textColorHint="@color/gray" />

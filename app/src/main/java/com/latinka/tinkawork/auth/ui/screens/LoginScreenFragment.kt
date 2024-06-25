@@ -1,26 +1,32 @@
 package com.latinka.tinkawork.auth.ui.screens
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-
 import com.latinka.tinkawork.R
+import com.latinka.tinkawork.auth.viewmodel.LoginScreenViewModel
+import com.latinka.tinkawork.auth.viewmodel.events.LoginFormEvent
+import com.latinka.tinkawork.auth.viewmodel.events.LoginScreenEvent
 import com.latinka.tinkawork.databinding.FragmentLoginScreenBinding
+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class LoginScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginScreenBinding
-    private lateinit var auth: FirebaseAuth
+    private lateinit var navigation: NavController
+    private val loginViewModel: LoginScreenViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,29 +39,71 @@ class LoginScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navigationController = view.findNavController()
-        auth = Firebase.auth
+        navigation = view.findNavController()
+
+        onListeningTextFieldsChanges()
+        onObserveTextFieldsChanges()
+        onListeningFormEvents()
 
         binding.forgetPasswordBtn.setOnClickListener {
-            navigationController.navigate(R.id.action_loginScreenFragment_to_sendEmailChangePasswordScreenFragment)
+            navigation.navigate(R.id.action_loginScreenFragment_to_sendEmailChangePasswordScreenFragment)
         }
+    }
 
-        binding.signInBtn.setOnClickListener {
-            binding.signInBtn.isEnabled = false
-
-            val disableColor = ContextCompat.getColor(requireContext(), R.color.gray)
-            binding.signInBtn.backgroundTintList = ColorStateList.valueOf(disableColor)
-
-            val email = binding.emailField.text.toString()
-            val password = binding.passwordField.text.toString()
-
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener { auth ->
-                    navigationController.navigate(R.id.action_loginScreenFragment_to_homeScreenFragment)
+    private fun onListeningTextFieldsChanges() {
+        loginViewModel.apply {
+            binding.emailField.doOnTextChanged { text, _, _, _ ->
+                if (text?.isNotEmpty()!!) {
+                    onEvent(LoginFormEvent.EmailChanged(text.toString()))
+                    loginScreenState.value.emailError = null
+                } else {
+                    loginScreenState.value.email = ""
                 }
-                .addOnFailureListener {
-                    Toast.makeText(context, "Jason", Toast.LENGTH_LONG).show()
+            }
+
+            binding.passwordField.doOnTextChanged { text, _, _, _ ->
+                if (text?.isNotEmpty()!!) {
+                    onEvent(LoginFormEvent.PasswordChanged(text.toString()))
+                    loginScreenState.value.passwordError = null
+                } else {
+                    loginScreenState.value.password = ""
                 }
+            }
+
+            binding.signInBtn.setOnClickListener {
+                onEvent(LoginFormEvent.Submit)
+            }
+        }
+    }
+
+    private fun onObserveTextFieldsChanges() {
+        CoroutineScope(Dispatchers.Main).launch {
+            loginViewModel.loginScreenState.collectLatest {
+                binding.apply {
+                    emailFieldLayout.helperText = it.emailError
+                    passwordFieldLayout.helperText = it.passwordError
+                }
+            }
+        }
+    }
+
+    private fun onListeningFormEvents() {
+        lifecycleScope.launch {
+            loginViewModel.loginScreenEvent.collectLatest {
+                when (it) {
+                    LoginScreenEvent.Loading -> {
+                        binding.signInBtn.isEnabled = false
+                    }
+                    LoginScreenEvent.Success -> {
+                        navigation.navigate(R.id.action_loginScreenFragment_to_homeScreenFragment)
+                        binding.signInBtn.isEnabled = true
+                    }
+                    is LoginScreenEvent.Error -> {}
+                    LoginScreenEvent.Completed -> {
+                        binding.signInBtn.isEnabled = true
+                    }
+                }
+            }
         }
     }
 }
