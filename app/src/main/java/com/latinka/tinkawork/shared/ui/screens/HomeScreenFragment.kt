@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 
-import com.latinka.tinkawork.R
 import com.latinka.tinkawork.databinding.FragmentHomeScreenBinding
 
 class HomeScreenFragment : Fragment() {
@@ -26,7 +24,10 @@ class HomeScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.entryButton.setOnClickListener {
-            view.findNavController().navigate(R.id.action_homeScreenFragment_to_establishmentDetailsScreenFragment)
         }
+    }
+
+    companion object {
+        fun newInstance() : HomeScreenFragment = HomeScreenFragment()
     }
 }

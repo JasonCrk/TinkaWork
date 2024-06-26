@@ -182,6 +182,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/signOutBtn"
             android:clickable="true"
             android:focusable="true"
             android:layout_marginHorizontal="27dp"

@@ -3,9 +3,7 @@ package com.latinka.tinkawork.auth.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 
 import com.latinka.tinkawork.auth.viewmodel.events.LoginFormEvent
 import com.latinka.tinkawork.auth.viewmodel.events.LoginScreenEvent
@@ -22,8 +20,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class LoginScreenViewModel : ViewModel() {
-
-    private val auth: FirebaseAuth = Firebase.auth
 
     private val _loginScreenState = MutableStateFlow(LoginScreenState())
     val loginScreenState: StateFlow<LoginScreenState> = _loginScreenState.asStateFlow()
@@ -46,9 +42,7 @@ class LoginScreenViewModel : ViewModel() {
                     password = event.password
                 )
             }
-            LoginFormEvent.Submit -> {
-                signIn()
-            }
+            LoginFormEvent.Submit -> { signIn() }
         }
     }
 
@@ -56,10 +50,7 @@ class LoginScreenViewModel : ViewModel() {
         val emailFieldResult = validateEmail.validate(_loginScreenState.value.email)
         val passwordFieldResult = validatePassword.validate(_loginScreenState.value.password)
 
-        val hasError = listOf(
-            emailFieldResult,
-            passwordFieldResult
-        ).any { !it.isValid }
+        val hasError = listOf(emailFieldResult, passwordFieldResult).any { !it.isValid }
 
         if (hasError) {
             _loginScreenState.value = _loginScreenState.value.copy(
@@ -68,6 +59,8 @@ class LoginScreenViewModel : ViewModel() {
             )
             return
         }
+
+        val auth = FirebaseAuth.getInstance()
 
         viewModelScope.launch {
             try {

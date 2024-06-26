@@ -2,7 +2,6 @@ package com.latinka.tinkawork.history.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 import com.latinka.tinkawork.R
@@ -22,7 +21,6 @@ class HistoryAdapter(private val list: List<History>): RecyclerView.Adapter<Hist
         holder.bind(history)
 
         holder.itemView.setOnClickListener{
-            it.findNavController().navigate(R.id.action_historyScreenFragment_to_assistanceDetailsScreenFragment)
         }
     }
 }

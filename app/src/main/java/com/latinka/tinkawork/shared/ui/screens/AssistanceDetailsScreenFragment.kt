@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 
 import com.latinka.tinkawork.databinding.FragmentAssistanceDetailsScreenBinding
 
@@ -26,7 +25,6 @@ class AssistanceDetailsScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.backToHistoryScreenBtn.setOnClickListener {
-            view.findNavController().popBackStack()
         }
     }
 }

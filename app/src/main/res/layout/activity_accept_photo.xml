@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="40dp"
-    tools:context=".shared.ui.screens.AcceptPhotoScreenFragment">
+    tools:context=".shared.ui.screens.AcceptPhotoActivity">
 
     <ImageView
         android:id="@+id/previewPhoto"

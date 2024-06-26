@@ -73,4 +73,8 @@ class HistoryScreenFragment : Fragment() {
         )
         historyRecycler.adapter = HistoryAdapter(listHistory)
     }
+
+    companion object {
+        fun newInstance() : HistoryScreenFragment = HistoryScreenFragment()
+    }
 }

@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/accountFirstName"
-            android:text="Emerzon Javier"
+            android:text="1234"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/accountLastName"
-            android:text="Kolki Martinez"
+            android:text="1234"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"

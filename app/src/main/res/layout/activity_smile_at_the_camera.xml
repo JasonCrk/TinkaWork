@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="12dp"
-    tools:context=".shared.ui.screens.SmileAtTheCameraScreenFragment">
+    tools:context=".shared.ui.screens.SmileAtTheCameraActivity">
 
     <ImageView
         android:layout_width="350dp"
