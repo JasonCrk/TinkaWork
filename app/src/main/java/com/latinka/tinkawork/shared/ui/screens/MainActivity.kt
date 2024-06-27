@@ -34,7 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         val user = auth.currentUser
         if (user == null) {
-            startActivity(Intent(applicationContext, LoginActivity::class.java))
+            startActivity(
+                Intent(applicationContext, LoginActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            )
             return
         }
 
