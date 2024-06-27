@@ -30,23 +30,32 @@ class AccountOptionsScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.personalInformationBtn.setOnClickListener {
-        }
+        binding.apply {
+            personalInformationBtn.setOnClickListener {
+            }
 
-        binding.signOutBtn.setOnClickListener {
-            binding.signOutBtn.isEnabled = false
-            binding.personalInformationBtn.isEnabled = false
+            changePasswordBtn.setOnClickListener {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.nav_container, ChangePasswordScreenFragment.newInstance())
+                    .addToBackStack(null)
+                    .commit()
+            }
 
-            binding.signOutBtn.background.setTint(
-                ContextCompat.getColor(requireContext(), R.color.gray)
-            )
+            signOutBtn.setOnClickListener {
+                binding.signOutBtn.isEnabled = false
+                binding.personalInformationBtn.isEnabled = false
 
-            Firebase.auth.signOut()
+                binding.signOutBtn.background.setTint(
+                    ContextCompat.getColor(requireContext(), R.color.gray)
+                )
 
-            startActivity(
-                Intent(requireContext(), LoginActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            )
+                Firebase.auth.signOut()
+
+                startActivity(
+                    Intent(requireContext(), LoginActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                )
+            }
         }
     }
 

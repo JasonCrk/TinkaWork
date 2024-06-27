@@ -43,6 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        updateFragment(HomeScreenFragment.newInstance())
+
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homeScreenFragment -> {
@@ -61,8 +63,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        updateFragment(HomeScreenFragment.newInstance())
-
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigation) { v, insets ->
             val bottomInsets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 insets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars()).bottom
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
+        transaction.replace(R.id.nav_container, fragment)
         transaction.commit()
     }
 }

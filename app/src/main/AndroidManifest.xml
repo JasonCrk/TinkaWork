@@ -31,9 +31,6 @@
             android:name=".auth.ui.screens.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".shared.ui.screens.AssistanceDetailsScreenFragment"
-            android:exported="false" />
-        <activity
             android:name=".shared.ui.screens.MainActivity"
             android:exported="true">
             <intent-filter>

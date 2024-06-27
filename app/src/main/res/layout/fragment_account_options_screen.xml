@@ -126,6 +126,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:clickable="true"
+            android:id="@+id/changePasswordBtn"
             style="@style/ButtonCardOption"
             android:layout_marginBottom="15dp"
             android:layout_marginHorizontal="27dp"
