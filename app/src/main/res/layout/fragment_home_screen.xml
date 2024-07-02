@@ -11,31 +11,40 @@
     android:gravity="center"
     tools:context=".shared.ui.screens.HomeScreenFragment">
 
+    <ProgressBar
+        android:id="@+id/circularProgress"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <TextView
+        android:id="@+id/workingTimer"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/workTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="66sp"
         android:layout_marginBottom="6dp"
-        android:textColor="?attr/colorPrimary"
-        android:text="@string/workTimer" />
+        android:textColor="@color/disable_text"
+        android:text="@string/work_timer" />
 
     <TextView
-        android:id="@+id/workingState"
-        android:text="@string/working_state_working"
-        android:textColor="@color/green"
+        android:visibility="invisible"
+        android:id="@+id/workingStatus"
+        android:text=""
+        android:textColor="@color/gray"
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:paddingHorizontal="20dp"
         android:paddingVertical="6dp"
         android:textAlignment="center"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_working_state_working"
+        android:background="@drawable/bg_working_state_gray"
         android:layout_height="wrap_content" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="invisible"
         android:id="@+id/breakTimeRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,29 +54,33 @@
         android:paddingVertical="10dp">
 
         <TextView
+            android:id="@+id/breakTimeRegisterContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12:00 AM - 2:00 PM"
+            android:text=""
             android:textColor="?attr/colorPrimary"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:contentDescription="Break icon"
-            android:src="@drawable/ic_cofee"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_baseline_coffee_24"
+            app:tint="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="HardcodedText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/exitTimeRegister"
+        android:id="@+id/departureTimeRegister"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_exit_time_register"
@@ -75,14 +88,16 @@
         android:paddingVertical="10dp">
 
         <TextView
+            android:id="@+id/departureTimeRegisterContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="8:00 PM"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:layout_width="25dp"
@@ -99,33 +114,35 @@
         android:layout_marginTop="20dp"
         android:id="@+id/entryButtonContainer"
         android:layout_width="match_parent"
+        android:maxWidth="500dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/entryButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/entryButton"
-            android:text="@string/entryButton"
+            android:enabled="false"
+            android:text="@string/entry_button"
             app:cornerRadius="12dp"
             android:textSize="24sp"
             android:layout_width="match_parent"
             android:layout_height="63dp"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/green"
+            android:textColor="@color/disable_text"
+            android:backgroundTint="@color/bg_disable"
+            app:iconTint="@color/disable_text"
             app:icon="@drawable/ic_baseline_play_arrow_24"
             app:iconGravity="textStart"
             android:gravity="center"
-            app:iconTint="@color/white"
             app:iconSize="30dp" />
 
         <View
-            android:id="@+id/divider2"
+            android:id="@+id/entryVerticalLine"
             android:layout_width="3dp"
             android:layout_height="18dp"
             android:layout_gravity="center_horizontal"
             android:background="?android:attr/listDivider"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@color/bg_disable"
             android:backgroundTintMode="screen"
             app:layout_constraintEnd_toEndOf="@id/entryButton"
             app:layout_constraintHorizontal_bias="0.501"
@@ -135,53 +152,57 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/breakButtonContainer"
+        android:maxWidth="500dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/breakButton"
+            android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/yellow"
-            android:text="@string/breakButton"
-            android:textColor="@color/black"
+            android:text="@string/break_button"
             android:textSize="24sp"
             app:cornerRadius="12dp"
-            app:icon="@drawable/ic_cofee"
+            app:icon="@drawable/ic_baseline_coffee_24"
             app:iconGravity="textStart"
             app:iconSize="28dp"
-            app:iconTint="@color/black"
+            android:textColor="@color/disable_text"
+            android:backgroundTint="@color/bg_disable"
+            app:iconTint="@color/disable_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/divider3"
+            android:id="@+id/breakVerticalLine"
             app:layout_constraintEnd_toEndOf="@id/breakButton"
             app:layout_constraintStart_toStartOf="@id/breakButton"
             app:layout_constraintTop_toBottomOf="@id/breakButton"
             android:layout_width="3dp"
             android:layout_height="18dp"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/bg_disable"
             android:backgroundTintMode="screen"
             android:layout_gravity="center_horizontal"
             android:background="?android:attr/listDivider" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/departureButton"
+        android:enabled="false"
         app:layout_constraintTop_toBottomOf="@id/breakButtonContainer"
-        android:id="@+id/exitButton"
-        android:text="@string/exitButton"
+        android:maxWidth="500dp"
+        android:text="@string/departure_button"
         android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="63dp"
         app:cornerRadius="12dp"
-        android:backgroundTint="@color/red"
-        android:textColor="@color/white"
         app:iconSize="30dp"
-        app:iconTint="@color/white"
+        android:textColor="@color/disable_text"
+        android:backgroundTint="@color/bg_disable"
+        app:iconTint="@color/disable_text"
         app:icon="@drawable/ic_baseline_exit_to_app_24"
         android:layout_gravity="center"
         app:iconGravity="textStart" />

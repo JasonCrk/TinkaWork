@@ -26,6 +26,5 @@
 
     <style name="buttonsSendEmail">
         <item name="android:backgroundTint">@color/yellow</item>
-
     </style>
 </resources>

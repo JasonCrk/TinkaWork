@@ -107,7 +107,7 @@
              android:layout_height="wrap_content"
              android:layout_marginStart="20dp"
              android:contentDescription="cofee icon"
-             android:src="@drawable/ic_cofee"
+             android:src="@drawable/ic_baseline_coffee_24"
              tools:ignore="HardcodedText" />
 
          <TextView

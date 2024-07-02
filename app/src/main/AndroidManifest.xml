@@ -15,21 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkaWork"
         tools:targetApi="31">
+
         <activity
             android:name=".shared.ui.screens.AcceptPhotoActivity"
             android:exported="false" />
+
         <activity
             android:name=".shared.ui.screens.SmileAtTheCameraActivity"
             android:exported="false" />
+
         <activity
             android:name=".establishment.ui.screens.EstablishmentDetailsActivity"
             android:exported="false" />
+
         <activity
             android:name=".auth.ui.screens.RestorePasswordActivity"
             android:exported="false" />
+
         <activity
             android:name=".auth.ui.screens.LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".shared.ui.screens.MainActivity"
             android:exported="true">

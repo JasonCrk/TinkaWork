@@ -6,10 +6,16 @@
     <color name="green_20_opacity">#33169051</color>
     <color name="lighter_green">#00C158</color>
     <color name="gray">#66665E</color>
+    <color name="blue">#166DFF</color>
+    <color name="gray_20_opacity">#3366665E</color>
+    <color name="disable_text">#B3A8A8A8</color>
+    <color name="bg_disable">#D1D1D1</color>
     <color name="red">#E40D1D</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FAE602</color>
     <color name="yellow_dark">#B4B40F</color>
+    <color name="yellow_green">@color/yellow</color>
+    <color name="yellow_dark_to_yellow">@color/yellow_dark</color>
     <color name="yellow_20_opacity">#33FAE602</color>
     <color name="opacity_yellow">#80FAE602</color>
     <color name="opacity_red">#80E40D1D</color>
@@ -26,5 +32,6 @@
     <color name="button_elevation_white">#ECECDF</color>
     <color name="transparent">#00000000</color>
     <color name="white_dark">@color/white</color>
+    <color name="dark_white">@color/black</color>
     <color name="green_25_opacity">#40169051</color>
 </resources>
