@@ -9,4 +9,5 @@ enum class WorkingStatus(val fullName: String) {
     WORKING_AFTER_RELAXING(WORKING.fullName),
     ENABLE_TO_DEPARTURE(WORKING.fullName),
     WORK_COMPLETED("Jornada completada"),
+    MISSED_WORK_DAY("Día de trabajo perdido")
 }

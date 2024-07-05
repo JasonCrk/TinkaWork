@@ -7,6 +7,8 @@ import com.google.firebase.firestore.QuerySnapshot
 import java.util.Calendar
 
 interface BreakRepository {
-    fun getBreakByTodayDate(today: Calendar, timeRecordRef: DocumentReference)
+    fun getByWorkday(entryTime: Calendar, timeRecordRef: DocumentReference)
         : Task<QuerySnapshot>
+    fun findByTimeRecord(timeRecordRef: DocumentReference) : Task<QuerySnapshot>
+    fun create(data: HashMap<String, Any>) : Task<Void>
 }

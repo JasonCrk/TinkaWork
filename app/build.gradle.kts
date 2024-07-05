@@ -54,20 +54,44 @@ dependencies {
 
     implementation(libs.androidx.fragment.ktx)
 
+    // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
 
+    // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    // ViewModels & LiveData
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
+    // Dependency Injection
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    // Kotlin Standard Library
     implementation(libs.kotlin.stdlib)
+
+    // CameraX and Camera2
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.extensions)
+    implementation(libs.guava)
+
+    // Render internet image url
+    implementation(libs.github.glide)
+
+    // Scan QR
+    implementation(libs.zxing.android.embedded)
+    implementation(libs.core)
+
+    // Location
+    implementation(libs.play.services.location)
 }
 
 kapt {

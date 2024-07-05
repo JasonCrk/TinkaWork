@@ -1,28 +1,44 @@
 package com.latinka.tinkawork.shared.ui.screens
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 
 import com.google.android.material.button.MaterialButton
+import com.google.zxing.integration.android.IntentIntegrator
+
+import com.journeyapps.barcodescanner.CaptureActivity
 
 import com.latinka.tinkawork.R
 import com.latinka.tinkawork.databinding.FragmentHomeScreenBinding
+import com.latinka.tinkawork.establishment.ui.screens.EstablishmentDetailsActivity
 import com.latinka.tinkawork.shared.viewmodel.HomeScreenViewModel
 import com.latinka.tinkawork.shared.viewmodel.states.HomeScreenEvent
 import com.latinka.tinkawork.timeRecord.data.models.WorkingStatus
 
 import dagger.hilt.android.AndroidEntryPoint
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -30,7 +46,9 @@ import java.util.Locale
 class HomeScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
+
     private val homeScreenViewModel : HomeScreenViewModel by viewModels()
+    private var workingTimerJob: Job? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,6 +108,7 @@ class HomeScreenFragment : Fragment() {
                 }
                 WorkingStatus.WORKING -> {
                     setWorkingStyle()
+                    startWorkingCounter()
 
                     disableMaterialButton(entryButton)
                     disableVerticalLine(entryVerticalLine)
@@ -99,6 +118,7 @@ class HomeScreenFragment : Fragment() {
                 }
                 WorkingStatus.RELAXING -> {
                     setRelaxingStyle()
+                    startWorkingCounter()
 
                     enableStopBreakButton()
 
@@ -109,11 +129,13 @@ class HomeScreenFragment : Fragment() {
                 }
                 WorkingStatus.WORKING_AFTER_RELAXING -> {
                     setWorkingStyle()
+                    startWorkingCounter()
 
                     val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
 
                     homeScreenViewModel.screenState.value.apply {
-                        breakTimeRegisterContent.text = "${dateFormat.format(startBreakTime!!)} - ${dateFormat.format(endBreakTime!!)}"
+                        breakTimeRegisterContent.text =
+                            "${dateFormat.format(startBreakTime!!)} - ${dateFormat.format(endBreakTime!!)}"
                         breakTimeRegister.visibility = View.VISIBLE
                     }
 
@@ -121,11 +143,13 @@ class HomeScreenFragment : Fragment() {
                 }
                 WorkingStatus.ENABLE_TO_DEPARTURE -> {
                     setWorkingStyle()
+                    startWorkingCounter()
 
                     val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
 
                     homeScreenViewModel.screenState.value.apply {
-                        breakTimeRegisterContent.text = "${dateFormat.format(startBreakTime!!)} - ${dateFormat.format(endBreakTime!!)}"
+                        breakTimeRegisterContent.text =
+                            "${dateFormat.format(startBreakTime!!)} - ${dateFormat.format(endBreakTime!!)}"
                         breakTimeRegister.visibility = View.VISIBLE
                     }
 
@@ -137,11 +161,13 @@ class HomeScreenFragment : Fragment() {
                 }
                 WorkingStatus.WORK_COMPLETED -> {
                     setDepartureStyle()
+                    setWorkingTimeAfterDeparture()
 
                     val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
 
                     homeScreenViewModel.screenState.value.apply {
-                        breakTimeRegisterContent.text = "${dateFormat.format(startBreakTime!!)} - ${dateFormat.format(endBreakTime!!)}"
+                        breakTimeRegisterContent.text =
+                            "${dateFormat.format(startBreakTime!!)} - ${dateFormat.format(endBreakTime!!)}"
                         departureTimeRegisterContent.text = dateFormat.format(endWorkTime!!)
                         breakTimeRegister.visibility = View.VISIBLE
                         departureTimeRegister.visibility = View.VISIBLE
@@ -149,7 +175,86 @@ class HomeScreenFragment : Fragment() {
 
                     disableAllButtons()
                 }
+                WorkingStatus.MISSED_WORK_DAY -> {
+                    setDepartureStyle()
+
+                    disableAllButtons()
+                }
             }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        workingTimerJob?.cancel()
+    }
+
+    private val scanActivityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data = result.data
+                val scanResult = IntentIntegrator.parseActivityResult(result.resultCode, data)
+
+                if (scanResult != null && scanResult.contents != null) {
+                    val scanContent = scanResult.contents
+
+                    if (scanContent.isNotEmpty()) {
+                        val smileAtTheCameraIntent = Intent(
+                            requireContext(),
+                            EstablishmentDetailsActivity::class.java
+                        ).apply {
+                            putExtra("establishmentId", scanContent)
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        }
+
+                        startActivity(smileAtTheCameraIntent)
+                    } else {
+                        startActivity(
+                            Intent(requireContext(), MainActivity::class.java)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        )
+                    }
+                } else {
+                    Log.e("DATA_QR", "Se cancelo el uso de la QR")
+                }
+            }
+        }
+
+    private fun startWorkingCounter() {
+        homeScreenViewModel.screenState.value.endWorkTime
+        workingTimerJob = CoroutineScope(Dispatchers.Main).launch {
+            while (isActive) {
+                updateWorkingTimer()
+                delay(1000)
+            }
+        }
+    }
+
+    private fun updateWorkingTimer() {
+        homeScreenViewModel.screenState.value.startTimeRecord?.let {
+            val elapsedTimeInMillis = System.currentTimeMillis() - it.time
+
+            val seconds = (elapsedTimeInMillis / 1000) % 60
+            val minutes = (elapsedTimeInMillis / (1000 * 60)) % 60
+            val hours = (elapsedTimeInMillis / (1000 * 60 * 60)) % 24
+
+            val currentWorkingTime = String.format(
+                Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds)
+            binding.workingTimer.text = currentWorkingTime
+        }
+    }
+
+    private fun setWorkingTimeAfterDeparture() {
+        homeScreenViewModel.screenState.value.let {
+            val elapsedTimeInMillis = it.endWorkTime!!.time - it.startTimeRecord!!.time
+
+            val seconds = (elapsedTimeInMillis / 1000) % 60
+            val minutes = (elapsedTimeInMillis / (1000 * 60)) % 60
+            val hours = (elapsedTimeInMillis / (1000 * 60 * 60)) % 24
+
+            val currentWorkingTime = String.format(
+                Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds)
+            binding.workingTimer.text = currentWorkingTime
         }
     }
 
@@ -174,6 +279,8 @@ class HomeScreenFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.white)
             )
             entryButton.setIconTintResource(R.color.white)
+
+            entryButton.setOnClickListener { scanEstablishmentQR() }
         }
     }
 
@@ -189,6 +296,10 @@ class HomeScreenFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.black)
             )
             breakButton.setIconTintResource(R.color.black)
+
+            homeScreenViewModel.screenState.value.startTimeRecordId?.let { id ->
+                breakButton.setOnClickListener { goToTakeAPhoto(id) }
+            }
         }
     }
 
@@ -204,6 +315,10 @@ class HomeScreenFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.white)
             )
             breakButton.setIconTintResource(R.color.white)
+
+            homeScreenViewModel.screenState.value.startTimeRecordId?.let { id ->
+                breakButton.setOnClickListener { goToTakeAPhoto(id) }
+            }
         }
     }
 
@@ -217,6 +332,10 @@ class HomeScreenFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.white)
             )
             departureButton.setIconTintResource(R.color.white)
+
+            departureButton.setOnClickListener {
+                scanEstablishmentQR()
+            }
         }
     }
 
@@ -288,6 +407,27 @@ class HomeScreenFragment : Fragment() {
             disableVerticalLine(breakVerticalLine)
             disableMaterialButton(departureButton)
         }
+    }
+
+    private fun scanEstablishmentQR() {
+        val integrator = IntentIntegrator.forSupportFragment(this).apply {
+            setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+            setPrompt("Escanea la QR")
+            setCameraId(0)
+            setBeepEnabled(true)
+            setBarcodeImageEnabled(true)
+            captureActivity = CaptureActivity::class.java
+        }
+
+        scanActivityResultLauncher.launch(integrator.createScanIntent())
+    }
+
+    private fun goToTakeAPhoto(timeRecordId: String) {
+        startActivity(
+            Intent(requireContext(), SmileAtTheCameraActivity::class.java)
+                .putExtra("timeRecordId", timeRecordId)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        )
     }
 
     companion object {

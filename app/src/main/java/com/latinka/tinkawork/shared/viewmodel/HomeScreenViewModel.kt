@@ -4,9 +4,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.toObject
+import com.google.firebase.firestore.QueryDocumentSnapshot
 
 import com.latinka.tinkawork.breaks.data.repositories.BreakRepository
 import com.latinka.tinkawork.schedule.data.models.Schedule
@@ -17,6 +18,7 @@ import com.latinka.tinkawork.account.data.models.User
 import com.latinka.tinkawork.account.data.repositories.UserRepository
 import com.latinka.tinkawork.breaks.data.models.Break
 import com.latinka.tinkawork.shared.viewmodel.states.HomeScreenState
+import com.latinka.tinkawork.timeRecord.data.db.TimeRecordFields
 import com.latinka.tinkawork.timeRecord.data.models.TimeRecord
 
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,7 +35,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 import java.util.Calendar
-import java.util.Date
+import java.util.TimeZone
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,6 +55,7 @@ class HomeScreenViewModel @Inject constructor(
 
     fun startHomeState() {
         viewModelScope.launch {
+            val peruTimezone = TimeZone.getTimeZone("America/Lima")
             _homeScreenEvent.emit(HomeScreenEvent.Loading)
 
             try {
@@ -70,7 +73,7 @@ class HomeScreenViewModel @Inject constructor(
                         ?: throw Exception("No se ha encontrado su horario")
                 }
 
-                val today = Calendar.getInstance()
+                val today = Calendar.getInstance(peruTimezone)
 
                 val currentDayOfWeek = today.get(Calendar.DAY_OF_WEEK)
 
@@ -79,12 +82,12 @@ class HomeScreenViewModel @Inject constructor(
                     return@launch
                 }
 
-                val entryTime = Calendar.getInstance().apply {
+                val entryTime = Calendar.getInstance(peruTimezone).apply {
                     set(Calendar.HOUR_OF_DAY, schedule.entryTime["hour"]!!)
                     set(Calendar.MINUTE, schedule.entryTime["minute"]!!)
                 }
 
-                val departureTime = Calendar.getInstance().apply {
+                val departureTime = Calendar.getInstance(peruTimezone).apply {
                     set(Calendar.HOUR_OF_DAY, schedule.departureTime["hour"]!!)
                     set(Calendar.MINUTE, schedule.departureTime["minute"]!!)
                 }
@@ -92,46 +95,58 @@ class HomeScreenViewModel @Inject constructor(
                 val isWorkingTime = today.after(entryTime) && today.before(departureTime)
 
                 if (isWorkingTime) {
-                    onWorkingTime(today, userRef)
+                    onWorkingTime(entryTime, userRef)
                 } else if (today.before(entryTime)) {
                     _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.EARLY))
                 } else {
-                    val startTimeRecordRef = withContext(Dispatchers.IO) {
-                        val data = timeRecordRepository.getOneByTodayDate(today, userRef).await()
-                        if (data.isEmpty) throw Exception("Ha ocurrido un error inesperado, vuelva a intentarlo más tarde")
-                        return@withContext data.first()
+                    val startTimeRecordSnapshot = withContext(Dispatchers.IO) {
+                        timeRecordRepository.getByWorkday(entryTime, userRef).await()
                     }
 
+                    if (startTimeRecordSnapshot.isEmpty) {
+                        _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.MISSED_WORK_DAY))
+                        return@launch
+                    }
+
+                    val startTimeRecord = startTimeRecordSnapshot.first()
+
+                    _homeScreenState.value = _homeScreenState.value.copy(
+                        startTimeRecordId = startTimeRecord.id,
+                        startTimeRecord = (startTimeRecord
+                            .data[TimeRecordFields.CREATED_AT] as Timestamp).toDate()
+                    )
+
                     val breaksTimeRecord = withContext(Dispatchers.IO) {
-                        breakRepository.getBreakByTodayDate(today, startTimeRecordRef.reference)
+                        breakRepository.getByWorkday(entryTime, startTimeRecord.reference)
                             .await()
                             .toObjects(Break::class.java)
                     }
 
-                    val endTimeRecordRef = withContext(Dispatchers.IO) {
-                        timeRecordRepository.getOneByTodayDate(
-                            today,
+                    val endTimeRecordSnapshot = withContext(Dispatchers.IO) {
+                        timeRecordRepository.getByWorkday(
+                            entryTime,
                             userRef,
                             false
                         ).await()
                     }
 
-                    var endTimeRecord: TimeRecord? = null
+                    val endTimeRecord: TimeRecord?
 
                     try {
-                        endTimeRecord = endTimeRecordRef.first().toObject(TimeRecord::class.java)
+                        endTimeRecord = endTimeRecordSnapshot.first().toObject(TimeRecord::class.java)
                     } catch (e: NoSuchElementException) {
                         _homeScreenState.value = _homeScreenState.value.copy(
                             startBreakTime = breaksTimeRecord[0].createdAt!!.toDate(),
                             endBreakTime = breaksTimeRecord[1].createdAt!!.toDate(),
                         )
                         _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.ENABLE_TO_DEPARTURE))
+                        return@launch
                     }
 
                     _homeScreenState.value = _homeScreenState.value.copy(
-                        startBreakTime = breaksTimeRecord[1].createdAt!!.toDate(),
+                        startBreakTime = breaksTimeRecord[0].createdAt!!.toDate(),
                         endBreakTime = breaksTimeRecord[1].createdAt!!.toDate(),
-                        endWorkTime = endTimeRecord!!.createdAt!!.toDate()
+                        endWorkTime = endTimeRecord.createdAt!!.toDate()
                     )
                     _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.WORK_COMPLETED))
                 }
@@ -143,22 +158,30 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
-    private suspend fun onWorkingTime(today: Calendar, userRef: DocumentReference) {
+    private suspend fun onWorkingTime(entryTime: Calendar, userRef: DocumentReference) {
         val entryTimeRecordResponse = withContext(Dispatchers.IO) {
-            timeRecordRepository.getOneByTodayDate(today, userRef).await()
+            timeRecordRepository.getByWorkday(entryTime, userRef).await()
         }
 
-        val startTimeRecordRef: DocumentReference
+        val startTimeRecordSnapshot: QueryDocumentSnapshot
 
         try {
-            startTimeRecordRef = entryTimeRecordResponse.first().reference
+            startTimeRecordSnapshot = entryTimeRecordResponse.first()
         } catch (e: NoSuchElementException) {
             _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.ENABLE_TO_WORK))
             return
         }
 
+        _homeScreenState.value = _homeScreenState.value.copy(
+            startTimeRecordId = startTimeRecordSnapshot.id,
+            startTimeRecord = (startTimeRecordSnapshot
+                .data[TimeRecordFields.CREATED_AT] as Timestamp).toDate()
+        )
+
         val timeRecordBreaks = withContext(Dispatchers.IO) {
-            breakRepository.getBreakByTodayDate(today, startTimeRecordRef).await().toObjects(Break::class.java)
+            breakRepository.getByWorkday(
+                entryTime, startTimeRecordSnapshot.reference
+            ).await().toObjects(Break::class.java)
         }
 
         if (timeRecordBreaks.isEmpty()) {
@@ -170,7 +193,7 @@ class HomeScreenViewModel @Inject constructor(
             1 -> { _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.RELAXING)) }
             2 -> {
                 _homeScreenState.value = _homeScreenState.value.copy(
-                    startBreakTime = timeRecordBreaks[1].createdAt!!.toDate(),
+                    startBreakTime = timeRecordBreaks[0].createdAt!!.toDate(),
                     endBreakTime = timeRecordBreaks[1].createdAt!!.toDate()
                 )
                 _homeScreenEvent.emit(HomeScreenEvent.Success(WorkingStatus.WORKING_AFTER_RELAXING))
