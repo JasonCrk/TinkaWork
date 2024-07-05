@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Base.Theme.TinkaWork" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/background_light</item>
         <item name="colorPrimary">@color/black</item>
@@ -9,11 +9,11 @@
     <style name="BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
         <item name="backgroundTint">@color/background_light</item>
         <item name="itemActiveIndicatorStyle">@style/BottomNavigationViewActiveIndicator</item>
-        <item name="itemRippleColor">@color/red</item>
+        <item name="itemRippleColor">@color/green</item>
     </style>
 
     <style name="BottomNavigationViewActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/opacity_red</item>
+        <item name="android:color">@color/green_30_opacity</item>
     </style>
 
     <style name="ButtonCardOption" parent="Widget.Material3.CardView.Filled">

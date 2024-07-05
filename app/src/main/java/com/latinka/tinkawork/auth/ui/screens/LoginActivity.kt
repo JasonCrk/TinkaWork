@@ -18,7 +18,6 @@ import com.latinka.tinkawork.auth.viewmodel.events.LoginFormEvent
 import com.latinka.tinkawork.auth.viewmodel.events.LoginScreenEvent
 import com.latinka.tinkawork.databinding.ActivityLoginBinding
 import com.latinka.tinkawork.shared.ui.screens.MainActivity
-import com.latinka.tinkawork.shared.ui.utils.UIMode
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -111,10 +110,7 @@ class LoginActivity : AppCompatActivity() {
                         binding.forgetPasswordBtn.isEnabled = true
 
                         binding.signInBtn.background.setTint(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                if (UIMode.isDarkMode(applicationContext)) R.color.yellow else R.color.green
-                            )
+                            ContextCompat.getColor(applicationContext, R.color.yellow_green)
                         )
                     }
                 }

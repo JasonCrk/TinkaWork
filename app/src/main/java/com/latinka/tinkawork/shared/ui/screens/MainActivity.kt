@@ -19,6 +19,9 @@ import com.latinka.tinkawork.auth.ui.screens.LoginActivity
 import com.latinka.tinkawork.databinding.ActivityMainBinding
 import com.latinka.tinkawork.history.ui.screens.HistoryScreenFragment
 
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

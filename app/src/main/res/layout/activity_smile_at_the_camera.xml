@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="12dp"
     tools:context=".shared.ui.screens.SmileAtTheCameraActivity">
 
     <ImageView
@@ -31,8 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="12dp"
-        android:paddingEnd="10dp"
-        android:paddingStart="15dp"
+        android:paddingHorizontal="27dp"
         android:layout_marginBottom="150dp">
 
         <Button
@@ -44,7 +42,7 @@
             app:iconTint="@color/white"
             app:icon="@drawable/ic_baseline_camera_24"
             app:iconSize="30dp"
-            android:paddingVertical="8dp"
+            android:paddingVertical="10dp"
             android:textColor="@color/white"
             android:backgroundTint="@color/green"
             android:textSize="20sp"

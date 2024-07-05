@@ -18,7 +18,6 @@ import com.latinka.tinkawork.auth.viewmodel.RestorePasswordScreenViewModel
 import com.latinka.tinkawork.auth.viewmodel.events.RestorePasswordFormEvent
 import com.latinka.tinkawork.auth.viewmodel.events.RestorePasswordScreenEvent
 import com.latinka.tinkawork.databinding.ActivityRestorePasswordBinding
-import com.latinka.tinkawork.shared.ui.utils.UIMode
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -107,10 +106,7 @@ class RestorePasswordActivity : AppCompatActivity() {
                         binding.backToLoginBtn.isEnabled = true
 
                         binding.restorePasswordBtn.background.setTint(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                if (UIMode.isDarkMode(applicationContext)) R.color.yellow else R.color.green
-                            )
+                            ContextCompat.getColor(applicationContext, R.color.yellow_green)
                         )
                     }
                 }

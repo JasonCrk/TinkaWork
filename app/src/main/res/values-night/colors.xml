@@ -5,4 +5,9 @@
     <color name="white_dark">@color/black</color>
     <color name="bg_green_30_to_green_60">@color/green_60_opacity</color>
     <color name="green_25_opacity">#40169051</color>
+    <color name="yellow_green">@color/green</color>
+    <color name="disable_text">#494942</color>
+    <color name="bg_disable">#252522</color>
+    <color name="dark_white">@color/white</color>
+    <color name="yellow_dark_to_yellow">@color/yellow</color>
 </resources>
