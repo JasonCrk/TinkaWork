@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">TinkaWork</string>
-    <string name="workTimer">00:00:00</string>
-    <string name="entryButton">Entrada</string>
-    <string name="breakButton">Descanso</string>
-    <string name="exitButton">Salida</string>
+    <string name="work_timer">00:00:00</string>
+    <string name="entry_button">Entrada</string>
+    <string name="break_button">Descanso</string>
+    <string name="departure_button">Salida</string>
     <string name="working_state_working">Trabajando</string>
     <string name="working_state_exit">Trabajo concluido</string>
     <string name="working_state_break">Descansando</string>
@@ -12,10 +12,15 @@
     <string name="smile_at_the_camera_message">Empieza tu día con una gran sonrisa</string>
     <string name="take_the_picture_button">Tomarse la foto</string>
     <string name="sign_in_button">Ingresar</string>
-    <string name="password_hint_field">Contraseña actual</string>
-    <string name="confirm_password_hint_field">Nueva contraseña</string>
+    <string name="new_password_hint_field">Contraseña actual</string>
+    <string name="confirm_new_password_hint_field">Nueva contraseña</string>
+    <string name="password_hint_field">Contraseña</string>
+    <string name="stop_break_button">Reanudar trabajo</string>
+    <string name="confirm_password_hint_field">Confirmar contraseña</string>
     <string name="email_hint_field">Correo electrónico</string>
     <string name="send_email_to_recovery_password_button">Enviar correo eletrónico</string>
     <string name="confirm_btn">Confirmar</string>
     <string name="back_btn">Volver</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="departamento">Departamento:</string>
 </resources>

@@ -5,13 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
+    android:layout_margin="40dp"
     tools:context=".shared.ui.screens.AcceptPhotoActivity">
 
     <ImageView
         android:id="@+id/previewPhoto"
-        android:layout_width="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent "
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         android:contentDescription="User photo"
         android:src="@drawable/imagen_vertical"
         app:layout_constraintHeight_percent="0.80"
@@ -29,12 +32,13 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/repeatPhotoButton"
             android:contentDescription="Repeat photo"
             android:background="@drawable/bg_repeat_photo_button"
             android:src="@drawable/baseline_cached_24"
             app:tint="@color/dark_yellow"
             android:layout_width="100dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="30dp"
             android:layout_height="100dp"
             tools:ignore="HardcodedText" />
 
@@ -42,7 +46,10 @@
             android:id="@+id/acceptPhotoButton"
             android:contentDescription="Accept photo"
             android:background="@drawable/bg_accept_photo_button"
-            android:src="@drawable/ic_accept_photo"
+            android:src="@drawable/ic_check"
+            android:scaleType="centerCrop"
+            android:padding="22dp"
+            app:tint="@color/green"
             android:layout_width="100dp"
             android:layout_height="100dp"
             tools:ignore="HardcodedText" />
