@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/accountFirstName"
-            android:text="Emerzon Javier"
+            android:text="Name"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/accountLastName"
-            android:text="Kolki Martinez"
+            android:text="Last Name"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/accountRole"
-            android:text="Administrador"
+            android:text="Rol"
             android:textColor="@color/gray"
             android:textSize="18sp"
             android:textAlignment="center"
@@ -135,6 +135,7 @@
             android:focusable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="13dp"

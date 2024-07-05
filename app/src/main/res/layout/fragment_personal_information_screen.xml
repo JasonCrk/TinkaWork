@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/accountFirstName"
-            android:text="Emerzon Javier"
+            android:text="User Name "
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/accountLastName"
-            android:text="Kolki Martinez"
+            android:text="Last Name"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -49,7 +49,7 @@
 
         <TextView
             android:id="@+id/accountRole"
-            android:text="Administrador"
+            android:text=""
             android:textColor="@color/gray"
             android:textSize="18sp"
             android:textAlignment="center"
@@ -97,9 +97,55 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/accountDni"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="71934702"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            app:dividerColor="@color/gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_marginTop="3dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="14dp"
+                android:contentDescription="DNI"
+                android:src="@drawable/icon_email"
+                app:tint="@color/gray"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo"
+                    android:textSize="21sp"
+                    android:textColor="?attr/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/accountMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
                     android:textColor="?attr/colorPrimary"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -141,6 +187,7 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
+                    android:id="@+id/accountNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="916291534"
@@ -187,6 +234,7 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
+                    android:id="@+id/accountAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="jr.Unión-sin número"
@@ -232,6 +280,7 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
+                    android:id="@+id/accountBirthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="01 de octubre 2004"
