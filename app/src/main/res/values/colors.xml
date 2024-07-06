@@ -13,6 +13,7 @@
     <color name="red">#E40D1D</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FAE602</color>
+    <color name="green_yellow">@color/green</color>
     <color name="yellow_dark">#B4B40F</color>
     <color name="yellow_green">@color/yellow</color>
     <color name="yellow_dark_to_yellow">@color/yellow_dark</color>

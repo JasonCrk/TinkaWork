@@ -5,22 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
-
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.firestore
-import com.latinka.tinkawork.R
+import com.google.firebase.firestore.FirebaseFirestore
 
+import com.latinka.tinkawork.R
 import com.latinka.tinkawork.databinding.FragmentPersonalInformationScreenBinding
+
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PersonalInformationScreenFragment: Fragment() {
 
     private lateinit var binding: FragmentPersonalInformationScreenBinding
-    private lateinit var auth: FirebaseAuth
+
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,54 +37,34 @@ class PersonalInformationScreenFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
-        val db = Firebase.firestore
         val currentUser = auth.currentUser
         val uidUser = currentUser?.uid
 
         val userRef = uidUser?.let { db.collection("users").document(it) }
 
-        val txtFirstname = binding.accountFirstName
-        val txtLastName = binding.accountLastName
-        val txtRoles = binding.accountRole
-        val txtDni = binding.accountDni
-        val txtNumber = binding.accountNumber
-        val txtAddress = binding.accountAddress
-        val txtBirthday = binding.accountBirthday
-        val txtMail = binding.accountMail
-
-        val addOnSuccessListener = userRef?.get()
+        userRef?.get()
             ?.addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
 
-                    txtFirstname.text = documentSnapshot.getString("first_name")
-                    txtLastName.text = documentSnapshot.getString("last_name")
-                    txtDni.text = documentSnapshot.getString("dni")
-                    txtNumber.text = documentSnapshot.getString("phone_number")
-                    txtAddress.text = documentSnapshot.getString("address")
-                    txtBirthday.text= documentSnapshot.getString("birthdate")
-                    txtMail.text = documentSnapshot.getString("email")
+                    binding.apply {
+                        accountFirstName.text = documentSnapshot.getString("firstName")
+                        accountLastName.text = documentSnapshot.getString("lastName")
+                        accountDni.text = documentSnapshot.getString("dni")
+                        accountNumber.text = documentSnapshot.get("phoneNumber").toString()
+                        accountAddress.text = documentSnapshot.getString("address")
+                        accountBirthday.text = SimpleDateFormat("dd 'de' MMMM 'del' yyyy", Locale("es", "ES"))
+                            .format(documentSnapshot.getTimestamp("birthdate")!!.toDate().time)
+                        accountMail.text = documentSnapshot.getString("email")
+                    }
 
-                    fun getRole(userId: String): Task<String> {
-                        val userRef = db.collection("users").document(userId)
-                        return userRef.get().continueWithTask { task ->
-                            val rolRef = task.result?.get("role") as? DocumentReference?
-                            if (rolRef != null) {
-                                rolRef.get().continueWith { rolTask ->
-                                    rolTask.result?.getString("name") ?: "Rol no encontrado"
-                                }
-                            } else {
-                                Tasks.forResult("Rol no asignado")
-                            }
-                        }
-                    }
                     getRole(uidUser).addOnSuccessListener { role ->
-                        txtRoles.text = role
+                        binding.accountRole.text = role
                     }
-                }else{
-                    txtRoles.text = "Documento de usuario no encontrado"
+                } else{
+                    binding.accountRole.text = "Documento de usuario no encontrado"
                 }
             }
+
         binding.accountInfo.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.nav_container, AccountOptionsScreenFragment.newInstance())
@@ -89,6 +72,18 @@ class PersonalInformationScreenFragment: Fragment() {
                 .commit()
         }
     }
+
+    private fun getRole(userId: String): Task<String> {
+        val userRef = db.collection("users").document(userId)
+
+        return userRef.get().continueWithTask { task ->
+            val rolRef = task.result?.get("role") as? DocumentReference?
+            rolRef?.get()?.continueWith { rolTask ->
+                rolTask.result?.getString("name") ?: "Rol no encontrado"
+            } ?: Tasks.forResult("Rol no asignado")
+        }
+    }
+
     companion object {
         fun newInstance() : PersonalInformationScreenFragment = PersonalInformationScreenFragment()
     }

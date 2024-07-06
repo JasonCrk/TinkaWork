@@ -83,7 +83,10 @@ class RestorePasswordActivity : AppCompatActivity() {
                         binding.backToLoginBtn.isEnabled = false
 
                         binding.restorePasswordBtn.background.setTint(
-                            ContextCompat.getColor(applicationContext, R.color.gray)
+                            ContextCompat.getColor(applicationContext, R.color.bg_disable)
+                        )
+                        binding.restorePasswordBtn.setTextColor(
+                            ContextCompat.getColor(applicationContext, R.color.disable_text)
                         )
                     }
                     RestorePasswordScreenEvent.Success -> {
@@ -97,7 +100,17 @@ class RestorePasswordActivity : AppCompatActivity() {
                             }
                             .setNeutralButton("Ok") { dialog, _ ->
                                 dialog.dismiss()
-                            }
+                            }.show()
+
+                        binding.restorePasswordBtn.isEnabled = true
+                        binding.backToLoginBtn.isEnabled = true
+
+                        binding.restorePasswordBtn.background.setTint(
+                            ContextCompat.getColor(applicationContext, R.color.green_yellow)
+                        )
+                        binding.restorePasswordBtn.setTextColor(
+                            ContextCompat.getColor(applicationContext, R.color.white_dark)
+                        )
                     }
                     is RestorePasswordScreenEvent.Error -> {
                         Toast.makeText(applicationContext, event.error, Toast.LENGTH_LONG).show()
@@ -106,7 +119,10 @@ class RestorePasswordActivity : AppCompatActivity() {
                         binding.backToLoginBtn.isEnabled = true
 
                         binding.restorePasswordBtn.background.setTint(
-                            ContextCompat.getColor(applicationContext, R.color.yellow_green)
+                            ContextCompat.getColor(applicationContext, R.color.green_yellow)
+                        )
+                        binding.restorePasswordBtn.setTextColor(
+                            ContextCompat.getColor(applicationContext, R.color.white_dark)
                         )
                     }
                 }

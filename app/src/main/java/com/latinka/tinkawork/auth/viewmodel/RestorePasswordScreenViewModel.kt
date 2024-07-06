@@ -10,12 +10,14 @@ import com.latinka.tinkawork.auth.viewmodel.events.RestorePasswordScreenEvent
 import com.latinka.tinkawork.auth.viewmodel.states.RestorePasswordScreenState
 import com.latinka.tinkawork.shared.viewmodel.validations.ValidateEmail
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class RestorePasswordScreenViewModel : ViewModel() {
 
@@ -26,6 +28,8 @@ class RestorePasswordScreenViewModel : ViewModel() {
     val screenEvent = _screenEvent.asSharedFlow()
 
     private val validateEmail = ValidateEmail()
+
+    private val auth = FirebaseAuth.getInstance()
 
     fun onEvent(event: RestorePasswordFormEvent) {
         when (event) {
@@ -48,12 +52,12 @@ class RestorePasswordScreenViewModel : ViewModel() {
             return
         }
 
-        val auth = FirebaseAuth.getInstance()
-
         viewModelScope.launch {
             try {
                 _screenEvent.emit(RestorePasswordScreenEvent.Loading)
-                auth.sendPasswordResetEmail(_screenState.value.email).await()
+                withContext(Dispatchers.IO) {
+                    auth.sendPasswordResetEmail(_screenState.value.email).await()
+                }
                 _screenEvent.emit(RestorePasswordScreenEvent.Success)
             } catch (e: Exception) {
                 _screenEvent.emit(RestorePasswordScreenEvent.Error(e.message.toString()))

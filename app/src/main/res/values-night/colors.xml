@@ -9,5 +9,6 @@
     <color name="disable_text">#494942</color>
     <color name="bg_disable">#252522</color>
     <color name="dark_white">@color/white</color>
+    <color name="green_yellow">@color/yellow</color>
     <color name="yellow_dark_to_yellow">@color/yellow</color>
 </resources>
