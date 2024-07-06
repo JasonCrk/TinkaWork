@@ -1,9 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.TinkaWork" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
+        <item name="android:windowBackground">@color/black</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorSecondary">@color/yellow</item>
-        <item name="colorButtonNormal">@color/red</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
+        <item name="colorButtonNormal">@color/black</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/black</item>
+        <item name="itemActiveIndicatorStyle">@style/BottomNavigationViewActiveIndicator</item>
+        <item name="itemRippleColor">@color/yellow</item>
+    </style>
+
+    <style name="BottomNavigationViewActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/opacity_yellow</item>
+    </style>
+
+    <style name="ButtonCardOption" parent="Widget.Material3.CardView.Filled">
+        <item name="elevation">0dp</item>
+        <item name="cardBackgroundColor">@color/button_elevation_dark</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="buttonsSendEmail">
+        <item name="android:backgroundTint">@color/yellow</item>
     </style>
 </resources>

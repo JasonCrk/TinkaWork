@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_yellow">@color/yellow</color>
+    <color name="bg_yellow_60_to_yellow_30">@color/yellow_30_opacity</color>
+    <color name="white_dark">@color/black</color>
+    <color name="bg_green_20_to_green_20">@color/green_20_opacity</color>
+    <color name="green_25_opacity">#40169051</color>
+    <color name="yellow_green">@color/green</color>
+    <color name="disable_text">#494942</color>
+    <color name="bg_disable">#252522</color>
+    <color name="dark_white">@color/white</color>
+    <color name="green_yellow">@color/yellow</color>
+    <color name="yellow_dark_to_yellow">@color/yellow</color>
+</resources>

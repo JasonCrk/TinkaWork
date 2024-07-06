@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/accountFirstName"
-            android:text="Emerzon Javier"
+            android:text="Name"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/accountLastName"
-            android:text="Kolki Martinez"
+            android:text="Last Name"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/accountRole"
-            android:text="Administrador"
+            android:text="Rol"
             android:textColor="@color/gray"
             android:textSize="18sp"
             android:textAlignment="center"
@@ -63,15 +63,15 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/accountInfo"
         android:layout_marginTop="25dp"
-        android:layout_marginHorizontal="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
+            android:layout_marginHorizontal="27dp"
             android:id="@+id/personalInformationBtn"
+            style="@style/ButtonCardOption"
             android:clickable="true"
             android:focusable="true"
-            app:cardElevation="2dp"
             android:layout_width="match_parent"
             android:layout_marginBottom="15dp"
             android:layout_height="wrap_content">
@@ -98,7 +98,7 @@
                         android:layout_marginEnd="6dp"
                         android:contentDescription="personIcon"
                         android:src="@drawable/ic_baseline_person_24"
-                        app:tint="?attr/colorSecondary"
+                        app:tint="?attr/colorPrimary"
                         tools:ignore="HardcodedText" />
 
                     <TextView
@@ -126,64 +126,71 @@
 
         <com.google.android.material.card.MaterialCardView
             android:clickable="true"
-            android:focusable="true"
-            app:cardElevation="2dp"
+            android:id="@+id/changePasswordBtn"
+            style="@style/ButtonCardOption"
             android:layout_marginBottom="15dp"
+            android:layout_marginHorizontal="27dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:paddingVertical="12dp"
-                android:paddingHorizontal="13dp"
+                android:id="@+id/btnChangePassword"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="12dp">
 
                 <LinearLayout
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_lock_24"
-                        android:contentDescription="personIcon"
-                        app:tint="?attr/colorSecondary"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginEnd="6dp"
+                        android:contentDescription="personIcon"
+                        android:src="@drawable/ic_baseline_lock_24"
+                        app:tint="?attr/colorPrimary"
                         tools:ignore="HardcodedText" />
 
                     <TextView
-                        android:text="Cambiar contraseña"
-                        android:textSize="22sp"
-                        android:textColor="?attr/colorPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Cambiar contraseña"
+                        android:textColor="?attr/colorPrimary"
+                        android:textSize="22sp"
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
 
                 <ImageView
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/gray"
-                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                    android:contentDescription="personIcon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="personIcon"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/gray"
                     tools:ignore="HardcodedText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/signOutBtn"
             android:clickable="true"
             android:focusable="true"
+            android:layout_marginHorizontal="27dp"
             android:backgroundTint="@color/red"
+            app:strokeWidth="0dp"
+            app:strokeColor="@android:color/transparent"
             app:cardElevation="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -206,7 +213,7 @@
                     app:tint="@color/white"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="9dp"
                     tools:ignore="HardcodedText" />
 
                 <TextView

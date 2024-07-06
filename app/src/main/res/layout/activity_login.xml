@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.ui.screens.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Logo"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailFieldLayout"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        app:helperTextEnabled="true"
+        android:hint="@string/email_hint_field"
+        app:helperTextTextColor="@color/red"
+        app:placeholderText="@string/email_hint_field"
+        app:placeholderTextColor="@color/gray"
+        app:boxStrokeErrorColor="@color/red"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailField"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="DNI"
+            android:hint="@string/email_hint_field"
+            android:inputType="textEmailAddress"
+            android:minHeight="52dp"
+            android:textColorHint="@color/gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordFieldLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/red"
+        android:hint="@string/password_hint_field"
+        app:placeholderText="@string/password_hint_field"
+        app:placeholderTextColor="@color/gray"
+        app:boxStrokeErrorColor="@color/red"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordField"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:autofillHints="Contraseña"
+            android:hint="@string/password_hint_field"
+            app:boxStrokeErrorColor="@color/red"
+            android:inputType="textPassword"
+            android:minHeight="52dp"
+            android:textColorHint="@color/gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/forgetPasswordBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/transparent"
+        android:paddingHorizontal="10dp"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/signInBtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:backgroundTint="?attr/colorSecondary"
+        android:text="@string/sign_in_button"
+        android:textColor="@color/white_dark"
+        android:textSize="20sp"/>
+</LinearLayout>
