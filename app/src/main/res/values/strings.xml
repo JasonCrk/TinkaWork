@@ -12,6 +12,8 @@
     <string name="smile_at_the_camera_message">Empieza tu día con una gran sonrisa</string>
     <string name="take_the_picture_button">Tomarse la foto</string>
     <string name="sign_in_button">Ingresar</string>
+    <string name="new_password_hint_field">Contraseña actual</string>
+    <string name="confirm_new_password_hint_field">Nueva contraseña</string>
     <string name="password_hint_field">Contraseña</string>
     <string name="stop_break_button">Reanudar trabajo</string>
     <string name="confirm_password_hint_field">Confirmar contraseña</string>
