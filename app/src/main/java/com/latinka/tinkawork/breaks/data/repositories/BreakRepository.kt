@@ -10,5 +10,6 @@ interface BreakRepository {
     fun getByWorkday(entryTime: Calendar, timeRecordRef: DocumentReference)
         : Task<QuerySnapshot>
     fun findByTimeRecord(timeRecordRef: DocumentReference) : Task<QuerySnapshot>
+    fun getCompleteBreakByTimeRecord(timeRecordRef: DocumentReference): Task<QuerySnapshot>
     fun create(data: HashMap<String, Any>) : Task<Void>
 }

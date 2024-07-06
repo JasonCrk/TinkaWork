@@ -11,7 +11,7 @@ class UserRepositoryImpl : UserRepository {
 
     private val db = Firebase.firestore
 
-    override fun getUserByUid(userUid: String): Task<DocumentSnapshot> {
-        return db.collection(FireStoreCollections.USERS).document(userUid).get()
+    override fun getById(id: String): Task<DocumentSnapshot> {
+        return db.collection(FireStoreCollections.USERS).document(id).get()
     }
 }

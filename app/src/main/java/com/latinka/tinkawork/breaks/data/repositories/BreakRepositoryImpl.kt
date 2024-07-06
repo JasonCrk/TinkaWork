@@ -49,6 +49,14 @@ class BreakRepositoryImpl : BreakRepository {
             .get()
     }
 
+    override fun getCompleteBreakByTimeRecord(timeRecordRef: DocumentReference): Task<QuerySnapshot> {
+        return db.collection(FireStoreCollections.BREAKS)
+            .whereEqualTo(BreakFields.TIME_RECORD, timeRecordRef)
+            .orderBy(BreakFields.CREATED_AT, Query.Direction.ASCENDING)
+            .limit(2)
+            .get()
+    }
+
     override fun create(data: HashMap<String, Any>): Task<Void> {
         return db.collection(FireStoreCollections.BREAKS).document().set(data)
     }

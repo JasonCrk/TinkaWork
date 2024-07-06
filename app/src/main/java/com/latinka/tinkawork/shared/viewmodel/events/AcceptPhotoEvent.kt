@@ -1,4 +1,4 @@
-package com.latinka.tinkawork.shared.viewmodel.states
+package com.latinka.tinkawork.shared.viewmodel.events
 
 sealed class AcceptPhotoEvent {
     data object Loading: AcceptPhotoEvent()

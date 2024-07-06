@@ -23,6 +23,7 @@ constraintlayout = "2.1.4"
 lifecycleViewmodelKtx = "2.8.3"
 kotlinxCoroutinesCore = "1.8.1"
 playServicesLocation = "21.3.0"
+shimmer = "0.5.0"
 zxingAndroidEmbedded = "4.3.0"
 
 [libraries]
@@ -56,6 +57,7 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesCore" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
 
 [plugins]

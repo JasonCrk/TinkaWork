@@ -1,4 +1,4 @@
-package com.latinka.tinkawork.schedule.data.models
+package com.latinka.tinkawork.shared.data.models
 
 data class Schedule(
     @field:JvmField
