@@ -6,10 +6,13 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 
 import java.util.Calendar
+import java.util.Date
 
 interface TimeRecordRepository {
+    fun findEntryTimeByUser(userRef: DocumentReference): Task<QuerySnapshot>
+    fun getDepartureByEntryTimeAndUser(entryTime: Date, userRef: DocumentReference): Task<QuerySnapshot>
+    fun getById(id: String): Task<DocumentSnapshot>
     fun getByWorkday(entryTime: Calendar, userRef: DocumentReference, isEntry: Boolean = true)
         : Task<QuerySnapshot>
-    fun getById(id: String) : Task<DocumentSnapshot>
-    fun create(data: HashMap<String, Any>) : Task<Void>
+    fun create(data: HashMap<String, Any>): Task<Void>
 }

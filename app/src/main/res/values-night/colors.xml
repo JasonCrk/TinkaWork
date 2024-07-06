@@ -3,7 +3,7 @@
     <color name="dark_yellow">@color/yellow</color>
     <color name="bg_yellow_60_to_yellow_30">@color/yellow_30_opacity</color>
     <color name="white_dark">@color/black</color>
-    <color name="bg_green_30_to_green_60">@color/green_60_opacity</color>
+    <color name="bg_green_20_to_green_20">@color/green_20_opacity</color>
     <color name="green_25_opacity">#40169051</color>
     <color name="yellow_green">@color/green</color>
     <color name="disable_text">#494942</color>

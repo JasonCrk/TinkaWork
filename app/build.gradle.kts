@@ -92,6 +92,9 @@ dependencies {
 
     // Location
     implementation(libs.play.services.location)
+
+    // Shimmer Effect (Facebook)
+    implementation(libs.shimmer)
 }
 
 kapt {

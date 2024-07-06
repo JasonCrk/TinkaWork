@@ -24,7 +24,7 @@ import com.latinka.tinkawork.R
 import com.latinka.tinkawork.databinding.FragmentHomeScreenBinding
 import com.latinka.tinkawork.establishment.ui.screens.EstablishmentDetailsActivity
 import com.latinka.tinkawork.shared.viewmodel.HomeScreenViewModel
-import com.latinka.tinkawork.shared.viewmodel.states.HomeScreenEvent
+import com.latinka.tinkawork.shared.viewmodel.events.HomeScreenEvent
 import com.latinka.tinkawork.timeRecord.data.models.WorkingStatus
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,9 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
-
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch

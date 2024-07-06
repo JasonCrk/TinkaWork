@@ -17,7 +17,7 @@ import com.latinka.tinkawork.R
 import com.latinka.tinkawork.account.ui.screens.AccountOptionsScreenFragment
 import com.latinka.tinkawork.auth.ui.screens.LoginActivity
 import com.latinka.tinkawork.databinding.ActivityMainBinding
-import com.latinka.tinkawork.history.ui.screens.HistoryScreenFragment
+import com.latinka.tinkawork.timeRecord.ui.screens.HistoryScreenFragment
 
 import dagger.hilt.android.AndroidEntryPoint
 

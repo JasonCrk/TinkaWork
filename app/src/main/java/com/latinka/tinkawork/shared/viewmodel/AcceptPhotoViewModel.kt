@@ -20,9 +20,9 @@ import com.latinka.tinkawork.account.data.models.User
 import com.latinka.tinkawork.account.data.repositories.UserRepository
 import com.latinka.tinkawork.breaks.data.repositories.BreakRepository
 import com.latinka.tinkawork.establishment.data.repositories.EstablishmentRepository
-import com.latinka.tinkawork.schedule.data.models.Schedule
+import com.latinka.tinkawork.shared.data.models.Schedule
 import com.latinka.tinkawork.shared.data.services.FirebaseStorageService
-import com.latinka.tinkawork.shared.viewmodel.states.AcceptPhotoEvent
+import com.latinka.tinkawork.shared.viewmodel.events.AcceptPhotoEvent
 import com.latinka.tinkawork.timeRecord.data.repositories.TimeRecordRepository
 
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -98,7 +98,7 @@ class AcceptPhotoViewModel @Inject constructor(
 
             val userSnapshot: DocumentSnapshot
             try {
-                userSnapshot = userRepository.getUserByUid(userId).await()
+                userSnapshot = userRepository.getById(userId).await()
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     _acceptPhotoEvent.emit(
@@ -166,7 +166,7 @@ class AcceptPhotoViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             withContext(Dispatchers.Main) { _acceptPhotoEvent.emit(AcceptPhotoEvent.Loading) }
 
-            val userRef = userRepository.getUserByUid(userId).await().reference
+            val userRef = userRepository.getById(userId).await().reference
 
             val location: Location?
             try {

@@ -4,5 +4,5 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 
 interface UserRepository {
-    fun getUserByUid(userUid: String): Task<DocumentSnapshot>
+    fun getById(id: String): Task<DocumentSnapshot>
 }

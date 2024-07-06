@@ -5,157 +5,245 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shared.ui.screens.AssistanceDetailsScreenFragment">
+    tools:context=".timeRecord.ui.screens.AssistanceDetailsScreenFragment">
 
    <ImageButton
        android:id="@+id/backToHistoryScreenBtn"
        android:layout_width="50dp"
        android:layout_height="50dp"
-       android:layout_marginStart="25dp"
-       android:layout_marginTop="30dp"
+       android:layout_marginStart="10dp"
+       android:layout_marginTop="12dp"
        android:contentDescription="back icon"
        android:src="@drawable/baseline_arrow_back_24"
+       android:backgroundTint="@color/transparent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"
-       app:tint="?attr/colorPrimary"
+       app:tint="@color/dark_white"
        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
    <LinearLayout
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:visibility="visible"
        android:gravity="center"
        android:orientation="vertical"
        app:layout_constraintTop_toBottomOf="@id/backToHistoryScreenBtn"
+       android:layout_marginHorizontal="27dp"
        android:layout_marginTop="25dp"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent">
 
       <TextView
+          android:id="@+id/entryTimeDate"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Domingo 10 de Diciembre del 2024"
+          android:layout_height="32dp"
+          android:visibility="gone"
+          android:text=""
           android:textColor="?attr/colorPrimary"
           android:layout_marginBottom="14dp"
           android:textSize="24.5sp"
           android:textStyle="bold" />
 
+      <com.facebook.shimmer.ShimmerFrameLayout
+          app:shimmer_auto_start="true"
+          android:layout_marginBottom="14dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+         <View
+             android:id="@+id/entryTimeDateLoading"
+             android:background="@color/bg_disable"
+             android:layout_width="match_parent"
+             android:layout_height="32dp" />
+      </com.facebook.shimmer.ShimmerFrameLayout>
+
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Tiempo Total:"
+          android:text="@string/total_working_time"
           android:textColor="@color/gray"
           android:textSize="18sp" />
 
       <TextView
-          android:text="00:00:00"
+          android:id="@+id/totalWorkingTime"
           android:textAlignment="center"
+          android:visibility="gone"
           android:textColor="?attr/colorPrimary"
           android:textSize="60sp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_width="340dp"
+          android:layout_height="80dp"
           tools:ignore="HardcodedText" />
 
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="340dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="30dp"
-          android:background="@drawable/item_details_assitence"
-          android:backgroundTint="@color/bg_green_30_to_green_60"
-          android:gravity="center"
-          android:orientation="horizontal">
-
-         <ImageView
-             android:contentDescription="play icon"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintTop_toTopOf="parent"
-             app:tint="@color/green"
-             android:layout_marginStart="15dp"
-             android:layout_width="30dp"
-             android:layout_height="30dp"
-             android:src="@drawable/ic_baseline_play_arrow_24"
-             tools:ignore="HardcodedText" />
+      <com.facebook.shimmer.ShimmerFrameLayout
+          app:shimmer_auto_start="true"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent">
 
          <TextView
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintTop_toTopOf="parent"
-             android:textColor="@color/green"
-             android:layout_marginEnd="20dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:gravity="end"
-             android:text="8:00 AM"
-             android:textSize="18sp" />
-      </androidx.constraintlayout.widget.ConstraintLayout>
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="340dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/item_details_assitence"
-          android:backgroundTint="@color/yellow_60_opacity"
-          android:gravity="center"
-          android:orientation="horizontal">
-
-         <ImageView
-             app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:tint="@color/dark_yellow"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginStart="20dp"
-             android:contentDescription="cofee icon"
-             android:src="@drawable/ic_baseline_coffee_24"
+             android:id="@+id/totalWorkingTimeLoading"
+             android:textAlignment="center"
+             android:textColor="?attr/colorPrimary"
+             android:textSize="60sp"
+             android:text="00:00:00"
+             android:layout_width="match_parent"
+             android:layout_height="80dp"
              tools:ignore="HardcodedText" />
+      </com.facebook.shimmer.ShimmerFrameLayout>
 
-         <TextView
-             app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"
-             android:textColor="@color/dark_yellow"
-             android:layout_marginEnd="20dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:gravity="end"
-             android:text="1:00 PM - 3:00 PM"
-             android:textSize="18sp" />
-      </androidx.constraintlayout.widget.ConstraintLayout>
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="340dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/item_details_assitence"
+      <LinearLayout
+          android:id="@+id/assistanceTimes"
+          android:orientation="vertical"
           android:gravity="center"
-          android:orientation="horizontal"
-          tools:layout_editor_absoluteX="37dp"
-          tools:layout_editor_absoluteY="381dp">
+          android:visibility="gone"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
 
-         <ImageView
-             android:contentDescription="exit icon"
-             app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:tint="@color/red"
-             android:layout_marginStart="20dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:src="@drawable/baseline_close_24"
-             tools:ignore="HardcodedText" />
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:id="@+id/entryTimeRecordContainer"
+             android:layout_width="340dp"
+             android:layout_height="48dp"
+             android:layout_marginTop="30dp"
+             android:background="@drawable/bg_details_assistance"
+             android:backgroundTint="@color/bg_green_20_to_green_20"
+             android:gravity="center"
+             android:orientation="horizontal">
 
-         <TextView
-             app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"
-             android:textColor="@color/red"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:gravity="end"
-             android:layout_marginEnd="20dp"
-             android:text="6:00 PM"
-             android:textSize="18sp" />
-      </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:contentDescription="play icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/green"
+                android:layout_marginStart="15dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_play_arrow_24"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/entryTimeRecord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/green"
+                android:layout_marginEnd="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text=""
+                android:textSize="18sp" />
+         </androidx.constraintlayout.widget.ConstraintLayout>
+
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:id="@+id/breakTimesContainer"
+             android:layout_width="340dp"
+             android:layout_height="48dp"
+             android:layout_marginTop="10dp"
+             android:visibility="gone"
+             android:background="@drawable/bg_details_assistance"
+             android:backgroundTint="@color/yellow_30_opacity"
+             android:gravity="center"
+             android:orientation="horizontal">
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/dark_yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:contentDescription="cofee icon"
+                android:src="@drawable/ic_baseline_coffee_24"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/breakTimes"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/dark_yellow"
+                android:layout_marginEnd="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text=""
+                android:textSize="18sp" />
+         </androidx.constraintlayout.widget.ConstraintLayout>
+
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:id="@+id/departureTimeRecordContainer"
+             android:layout_width="340dp"
+             android:layout_height="48dp"
+             android:layout_marginTop="10dp"
+             android:visibility="gone"
+             android:background="@drawable/bg_details_assistance"
+             android:backgroundTint="@color/red_20_opacity"
+             android:gravity="center"
+             android:orientation="horizontal"
+             tools:layout_editor_absoluteX="37dp"
+             tools:layout_editor_absoluteY="381dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:contentDescription="exit icon"
+                android:src="@drawable/ic_exit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/red"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/departureTimeRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:gravity="end"
+                android:text=""
+                android:textColor="@color/red"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+         </androidx.constraintlayout.widget.ConstraintLayout>
+      </LinearLayout>
+
+      <com.facebook.shimmer.ShimmerFrameLayout
+          android:layout_width="match_parent"
+          app:shimmer_auto_start="true"
+          android:layout_height="wrap_content">
+
+         <LinearLayout
+             android:id="@+id/assistanceTimesLoading"
+             android:layout_width="match_parent"
+             android:orientation="vertical"
+             android:gravity="center"
+             android:layout_height="wrap_content">
+
+            <View
+                android:background="@color/bg_disable"
+                android:layout_width="340dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/bg_disable"
+                android:layout_height="48dp" />
+
+            <View
+                android:background="@color/bg_disable"
+                android:layout_width="340dp"
+                android:backgroundTint="@color/bg_disable"
+                android:layout_marginTop="10dp"
+                android:layout_height="48dp" />
+
+            <View
+                android:background="@color/bg_disable"
+                android:layout_width="340dp"
+                android:backgroundTint="@color/bg_disable"
+                android:layout_marginTop="10dp"
+                android:layout_height="48dp" />
+         </LinearLayout>
+      </com.facebook.shimmer.ShimmerFrameLayout>
    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

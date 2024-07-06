@@ -10,8 +10,8 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.QueryDocumentSnapshot
 
 import com.latinka.tinkawork.breaks.data.repositories.BreakRepository
-import com.latinka.tinkawork.schedule.data.models.Schedule
-import com.latinka.tinkawork.shared.viewmodel.states.HomeScreenEvent
+import com.latinka.tinkawork.shared.data.models.Schedule
+import com.latinka.tinkawork.shared.viewmodel.events.HomeScreenEvent
 import com.latinka.tinkawork.timeRecord.data.models.WorkingStatus
 import com.latinka.tinkawork.timeRecord.data.repositories.TimeRecordRepository
 import com.latinka.tinkawork.account.data.models.User
@@ -62,7 +62,7 @@ class HomeScreenViewModel @Inject constructor(
                 val userRef: DocumentReference
 
                 val user = withContext(Dispatchers.IO) {
-                    val response = userRepository.getUserByUid(auth.currentUser!!.uid).await()
+                    val response = userRepository.getById(auth.currentUser!!.uid).await()
                     userRef = response.reference
                     return@withContext response.toObject(User::class.java)
                         ?: throw Exception("El usuario no existe")

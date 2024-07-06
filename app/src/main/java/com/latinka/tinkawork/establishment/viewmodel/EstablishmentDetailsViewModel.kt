@@ -59,7 +59,7 @@ class EstablishmentDetailsViewModel @Inject constructor(
             }
 
             val user = withContext(Dispatchers.IO) {
-                userRepository.getUserByUid(authUser.uid).await().toObject(User::class.java)
+                userRepository.getById(authUser.uid).await().toObject(User::class.java)
             }
 
             val establishment = establishmentSnapshot.toObject(Establishment::class.java)!!

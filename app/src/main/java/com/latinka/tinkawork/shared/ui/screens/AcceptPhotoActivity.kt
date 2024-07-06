@@ -25,7 +25,7 @@ import com.latinka.tinkawork.R
 import com.latinka.tinkawork.auth.ui.screens.LoginActivity
 import com.latinka.tinkawork.databinding.ActivityAcceptPhotoBinding
 import com.latinka.tinkawork.shared.viewmodel.AcceptPhotoViewModel
-import com.latinka.tinkawork.shared.viewmodel.states.AcceptPhotoEvent
+import com.latinka.tinkawork.shared.viewmodel.events.AcceptPhotoEvent
 
 import dagger.hilt.android.AndroidEntryPoint
 

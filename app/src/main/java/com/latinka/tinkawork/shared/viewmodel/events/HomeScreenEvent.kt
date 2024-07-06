@@ -1,4 +1,4 @@
-package com.latinka.tinkawork.shared.viewmodel.states
+package com.latinka.tinkawork.shared.viewmodel.events
 
 import com.latinka.tinkawork.timeRecord.data.models.WorkingStatus
 
